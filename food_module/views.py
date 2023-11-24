@@ -3,7 +3,7 @@ from . import models
 from .forms import Reservation
 import json
 from django.http import JsonResponse ,HttpResponseRedirect
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404 ,reverse
 
 class Home_page(TemplateView):
     template_name ='home.html'
@@ -69,6 +69,33 @@ def reserv(request):
             'status': 'no',
             'message': 'please login or register first'
         })
+
+
+
+def like_part(request,pk):
+
+    if request.user.is_authenticated:
+        post=get_object_or_404(models.Food_menu ,id=pk)
+        liked=False
+        if post.like.filter(id=request.user.id).exists():
+            post.like.remove(request.user)
+            liked=False
+        else:
+            post.like.add(request.user)
+            liked=True
+
+
+        return HttpResponseRedirect(reverse('home_page'))
+    else:
+        return JsonResponse({
+            'status': 'no',
+            'message':'please login first '
+        })
+
+
+
+
+
 
 
 
