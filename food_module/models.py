@@ -60,3 +60,16 @@ class reservation(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+
+class Comments(models.Model):
+    name =models.CharField(max_length=200)
+    email =models.EmailField(max_length=200)
+    text_area =models.TextField(max_length=800)
+    is_aactive=models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return self.email

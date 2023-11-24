@@ -30,3 +30,7 @@ class Reservation(forms.Form):
         ]
     )
 
+
+
+class comments(forms.Form):
+    pass
