@@ -31,3 +31,20 @@ class Food_menu(models.Model):
 
     def __str__(self):
         return self.food_name
+
+
+
+class Footer_data(models.Model):
+    phone_number=models.CharField(max_length=200)
+    email=models.CharField(max_length=200)
+    description=models.CharField(max_length=200)
+    facebook_link=models.URLField()
+    x_link=models.URLField()
+    linkdin_link=models.URLField()
+    instagram_link=models.URLField()
+    pinterest_link=models.URLField()
+
+
+
+    def __str__(self):
+        return self.phone_number
