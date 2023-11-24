@@ -48,3 +48,15 @@ class Footer_data(models.Model):
 
     def __str__(self):
         return self.phone_number
+
+
+class reservation(models.Model):
+    name=models.CharField(max_length=200)
+    phone=models.CharField(max_length=100)
+    email=models.EmailField(max_length=200)
+    number_of_guests= models.IntegerField()
+    date=models.DateField(null=True)
+    timee=models.TimeField(null=True)
+
+    def __str__(self):
+        return self.name
