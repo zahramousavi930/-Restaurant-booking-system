@@ -22,8 +22,10 @@ class Home_page(TemplateView):
     template_name ='home.html'
 
     def get_context_data(self, **kwargs):
+
         context=super(Home_page, self).get_context_data()
         context['foods']=models.Food_menu.objects.filter(is_active=True)
+
         context['reserve'] = Reservation()
         return context
 
