@@ -201,3 +201,52 @@ function login_dataa() {
 
 
 }
+
+
+
+
+function forget_pass() {
+       function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+    }
+
+      const user_email = document.getElementById('l_email').value
+    const user_pass = document.getElementById('l_password').value
+
+    fetch('/user/forget_pass',
+        {
+        method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+           user_email,
+
+            user_pass
+        }),
+         redirect: 'follow'
+        }
+
+        ).then(response=>{
+        console.log('okkkkk')
+    })
+
+}
