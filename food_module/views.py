@@ -11,6 +11,7 @@ class Home_page(TemplateView):
     def get_context_data(self, **kwargs):
         context=super(Home_page, self).get_context_data()
         context['foods']=models.Food_menu.objects.filter(is_active=True)
+        context['main_comments']=models.Comments.objects.filter(is_aactive=True)
         context['comment'] = comment_form()
         return context
 

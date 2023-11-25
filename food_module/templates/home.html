@@ -369,6 +369,9 @@
                           <g></g>
                         </svg>
                       </a>
+
+                        <a id="like_btn" href="{% url 'like' food.pk %}"><i class="bi bi-heart"></i></a>
+
                     </div>
                   </div>
                 </div>
@@ -470,32 +473,23 @@
         </div>
         <div class="carousel-wrap row">
           <div class="owl-carousel client_owl-carousel">
-            <div class="item">
+              {% for main_comment in main_comments %}
+                           <div class="item">
               <div class="box">
                 <div class="detail-box">
                   <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      {{ main_comment.text_area }}
                   </p>
-                  <h6>Jack </h6>
+                  <h6>{{ main_comment.name }} </h6>
 
                 </div>
 
               </div>
             </div>
-            <div class="item">
-              <div class="box">
-                <div class="detail-box">
-                  <p>
-                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </p>
-                  <h6>Mickel</h6>
+              {% endfor %}
 
-                </div>
-                <div class="img-box">
-                  <img src="images/client2.jpg" alt="" class="box-img" />
-                </div>
-              </div>
-            </div>
+
+
           </div>
         </div>
       </div>

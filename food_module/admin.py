@@ -13,7 +13,8 @@ class reserv_display(admin.ModelAdmin):
 
 
 class comments_display(admin.ModelAdmin):
-    list_display = ('name','email')
+    list_display = ('name','email','is_aactive')
+    list_editable = ('is_aactive',)
 
 admin.site.register(models.Food_menu,Food_display)
 admin.site.register(models.reservation,reserv_display)
