@@ -9,10 +9,13 @@ class Home_page(TemplateView):
     template_name ='home.html'
 
     def get_context_data(self, **kwargs):
+        liked =False
         context=super(Home_page, self).get_context_data()
         context['foods']=models.Food_menu.objects.filter(is_active=True)
         context['main_comments']=models.Comments.objects.filter(is_aactive=True)
         context['comment'] = comment_form()
+
+
         return context
 
 

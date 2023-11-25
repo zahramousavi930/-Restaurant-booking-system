@@ -370,7 +370,17 @@
                         </svg>
                       </a>
 
-                        <a id="like_btn" href="{% url 'like' food.pk %}"><i class="bi bi-heart"></i></a>
+
+                         <div class="like_part">
+                        <a type="button" id="like_btn" href="{% url 'like' food.pk %}"><i class="bi bi-heart-fill"></i> </a>
+                       <span>{{ food.like.count }}</span>
+                         </div>
+
+
+
+
+
+
 
                     </div>
                   </div>
