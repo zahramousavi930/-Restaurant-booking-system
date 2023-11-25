@@ -2,7 +2,6 @@ from django import forms
 from django.core import validators
 from django.core.exceptions import ValidationError
 
-
 class RegisterForm(forms.Form):
 
     username=forms.CharField(
@@ -31,6 +30,7 @@ class RegisterForm(forms.Form):
 
 
 
+
 class LoginForm(forms.Form):
     email = forms.EmailField(
         label='email',
@@ -47,4 +47,42 @@ class LoginForm(forms.Form):
             validators.MaxLengthValidator(100)
         ]
     )
+
+
+
+
+class ForgotPasswordForm(forms.Form):
+    email = forms.EmailField(
+        label='email',
+        widget=forms.EmailInput(attrs={'placeholder':'enter email','class':'form-control'}),
+        validators=[
+            validators.MaxLengthValidator(100),
+            validators.EmailValidator
+        ]
+    )
+
+
+class ResetPasswordForm(forms.Form):
+    password = forms.CharField(
+        label=' password',
+        widget=forms.PasswordInput(attrs={'placeholder':'enter password','class':'form-control'}),
+        validators=[
+            validators.MaxLengthValidator(100),
+        ]
+    )
+
+    confirm_password = forms.CharField(
+        label='confirm_password',
+        widget=forms.PasswordInput(attrs={'placeholder':'re enter password','class':'form-control'}),
+        validators=[
+            validators.MaxLengthValidator(100),
+        ]
+    )
+
+
+
+
+
+
+
 
