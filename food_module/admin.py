@@ -16,8 +16,16 @@ class comments_display(admin.ModelAdmin):
     list_display = ('name','email','is_aactive')
     list_editable = ('is_aactive',)
 
+
+
+class user_display(admin.ModelAdmin):
+    list_display = ('username','email','is_active')
+    list_editable = ('is_active',)
+
+
 admin.site.register(models.Food_menu,Food_display)
 admin.site.register(models.reservation,reserv_display)
 admin.site.register(models.Classification_food)
 admin.site.register(models.Footer_data)
 admin.site.register(models.Comments,comments_display)
+admin.site.register(models.User,user_display)

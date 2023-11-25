@@ -7,5 +7,6 @@ urlpatterns = [
     path('login',views.login_req,name='login'),
     path('logout',views.log_out,name='logout'),
     path('dashboard',views.dsahboard.as_view(),name='dashboard'),
+    path('activate-account/<email_active_code>', views.ActivateAccountView.as_view(), name='activate_account'),
 
 ]

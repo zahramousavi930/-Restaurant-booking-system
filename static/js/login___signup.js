@@ -47,7 +47,6 @@ function register_data(){
 
     const user_email =document.getElementById('r_email').value
     const user_pass =document.getElementById('r_password').value
-    const user_pass_con =document.getElementById('confirm_r_password').value
     const user_username =document.getElementById('r_username').value
 
 
@@ -58,7 +57,7 @@ function register_data(){
         credentials: 'include',
         headers ,
         body : JSON.stringify({
-            user_email,user_pass,user_pass_con,user_username
+            user_email,user_pass,user_username
         })
       }).then(response=>{
           response.json()
