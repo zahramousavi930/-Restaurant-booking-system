@@ -33,6 +33,9 @@ class Reservation(forms.Form):
 
 
 
+
+
+
 class comment_form(forms.Form):
     c_name= forms.CharField(
         widget=forms.TextInput(attrs={'placeholder' :'name' ,'class' :'form-control'}),

@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,FormView
 from . import models
 from .forms import Reservation ,comment_form
 import json
@@ -17,6 +17,33 @@ class Home_page(TemplateView):
 
 
         return context
+
+
+class Book_table(TemplateView):
+    template_name = 'book_table.html'
+
+    def get_context_data(self, **kwargs):
+        context=super(Book_table, self).get_context_data()
+        context['reserv']=Reservation()
+        return context
+
+    def post(self):
+        body_unicode = self.request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        u_name = body['name']
+        u_phone = body['phone']
+        u_email = body['email']
+        u_number = body['how_many']
+        u_date = body['date']
+        u_time = body['time']
+
+        print(u_name,u_phone,u_email,u_number,u_date,u_time)
+
+
+
+        return JsonResponse({
+            'status':'ok'
+        })
 
 
 
