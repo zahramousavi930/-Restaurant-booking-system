@@ -35,14 +35,14 @@ class Food_menu(models.Model):
 
 
 class Footer_data(models.Model):
-    phone_number=models.CharField(max_length=200)
-    email=models.CharField(max_length=200)
-    description=models.CharField(max_length=200)
-    facebook_link=models.URLField()
-    x_link=models.URLField()
-    linkdin_link=models.URLField()
-    instagram_link=models.URLField()
-    pinterest_link=models.URLField()
+    phone_number=models.CharField(max_length=200,null=True)
+    email=models.CharField(max_length=200,null=True)
+    description=models.TextField(max_length=200,null=True)
+    facebook_link=models.URLField(null=True)
+    x_link=models.URLField(null=True)
+    linkdin_link=models.URLField(null=True)
+    instagram_link=models.URLField(null=True)
+    pinterest_link=models.URLField(null=True)
 
 
 

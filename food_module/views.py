@@ -1,6 +1,6 @@
-from _ast import unaryop
 
-from django.views.generic import TemplateView,FormView
+
+from django.views.generic import TemplateView
 from . import models
 from .forms import Reservation ,comment_form
 import json
@@ -159,6 +159,14 @@ def like_part(request,pk):
 
 
 
+
+class about_us(TemplateView):
+    template_name = 'about_us.html'
+
+    def get_context_data(self, **kwargs):
+        context =super(about_us, self).get_context_data()
+        context['footer']=models.Footer_data.objects.get()
+        return context
 
 
 
