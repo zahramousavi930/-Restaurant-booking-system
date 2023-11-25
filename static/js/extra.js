@@ -1,6 +1,5 @@
 // reservation
 
-
 function likedd(pk) {
 
      function getCookie(name) {
@@ -152,6 +151,94 @@ function reserve() {
 }
 
 
+
+
+function comments_data() {
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+    }
+
+    const name=document.getElementById('id_c_name').value
+    const email=document.getElementById('id_c_email').value
+    const text=document.getElementById('id_c_text').value
+
+
+    fetch('/comment',{
+        method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+           name,email,text
+
+
+        })
+    }).then(response=>{
+        response.json().then(res=>{
+            if(res.status === 'ok'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'success',
+                    title: res.message
+                })
+            }
+
+            if(res.status === 'no'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
+
+        })
+    })
+
+
+
+
+
+}
 
 
 

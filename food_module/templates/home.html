@@ -416,6 +416,10 @@
 
     <!-- end about section -->
 
+
+
+
+
     <!-- book section -->
     <section class="book_section layout_padding">
       <div class="container">
@@ -425,32 +429,24 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form_container">
-              <form action="">
+              <form action="{% url 'add_comments' %}" method="post">
+                  {% csrf_token %}
                 <div>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=" name"
-                  />
+                    {{ comment.c_name }}
                 </div>
 
                 <div>
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder=" email "
-                  />
+                    {{ comment.c_email }}
+
                 </div>
 				  <div>
-                      <textarea class="form-control"  rows="10" >
-
-</textarea>
+                      {{ comment.c_text }}
                       
                   </div>
                   
 
                 <div class="btn_box">
-                  <button>send</button>
+                  <button onclick="comments_data()" type="button">send</button>
                 </div>
               </form>
             </div>

@@ -23,7 +23,7 @@ class Food_menu(models.Model):
     price=models.IntegerField()
     is_active=models.BooleanField(default=True)
     food_time=models.TimeField(auto_now_add=True)
-    Classification=models.ForeignKey('Classification_food',on_delete=models.CASCADE)
+    Classification=models.ForeignKey('Classification_food',on_delete=models.CASCADE ,blank=False)
     discount=models.IntegerField(null=True,blank=True)
     like = models.ManyToManyField(User,null=True ,blank=True)
 
