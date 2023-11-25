@@ -1,3 +1,5 @@
+from _ast import unaryop
+
 from django.views.generic import TemplateView,FormView
 from . import models
 from .forms import Reservation ,comment_form
@@ -20,30 +22,48 @@ class Home_page(TemplateView):
 
 
 class Book_table(TemplateView):
-    template_name = 'book_table.html'
+    template_name = 'book2.html'
 
     def get_context_data(self, **kwargs):
         context=super(Book_table, self).get_context_data()
         context['reserv']=Reservation()
         return context
 
-    def post(self):
-        body_unicode = self.request.body.decode('utf-8')
+    def post(self,request):
+        body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
         u_name = body['name']
-        u_phone = body['phone']
         u_email = body['email']
+        u_phone= body['phone']
         u_number = body['how_many']
         u_date = body['date']
         u_time = body['time']
 
-        print(u_name,u_phone,u_email,u_number,u_date,u_time)
 
 
 
-        return JsonResponse({
-            'status':'ok'
-        })
+        try:
+            new_reserve=models.reservation(
+                name=u_name,
+                email=u_email,
+                phone=u_phone,
+                number_of_guests=u_number,
+                date=u_date,
+                timee=u_time
+            )
+            new_reserve.save()
+
+            return JsonResponse({
+                'status':'ok',
+                'message':'reserve set successfully'
+            })
+
+        except:
+            return JsonResponse({
+                'status': 'no',
+                'message':'an error has occurred'
+            })
+
 
 
 

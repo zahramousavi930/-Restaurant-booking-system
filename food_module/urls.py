@@ -7,5 +7,5 @@ urlpatterns = [
     path('reserv', views.reserv, name='reservation'),
     path('comment', views.comments, name='add_comments'),
     path('like<int:pk>', views.like_part, name='like'),
-    path('book_table/', views.Book_table.as_view(), name='book_table'),
+    path('BookTable', views.Book_table.as_view(), name='book_table'),
 ]

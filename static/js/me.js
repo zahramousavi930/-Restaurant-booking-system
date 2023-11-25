@@ -1,10 +1,8 @@
-// reservation
 
 
 
 
-
-function booking() {
+function bookingg() {
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -33,6 +31,7 @@ function booking() {
     const name=document.getElementById('id_name').value
     const phone=document.getElementById('id_phone').value
     const email=document.getElementById('id_email').value
+
     const date=document.getElementById('m_date').value
     const how_many=document.getElementById('number_i').value
     const time=document.getElementById('m_time').value
@@ -41,12 +40,13 @@ function booking() {
 
 
 
-    fetch('/reserv',{
-        method: 'post',
+    fetch('',{
+          method: 'post',
         credentials: 'include',
         headers ,
         body : JSON.stringify({
-           name,phone,email,how_many,date,time
+           name,email,phone,date,how_many,time
+
 
 
         })
@@ -71,7 +71,7 @@ function booking() {
                 })
             }
 
-             if(res.status === 'no'){
+            if(res.status === 'no'){
                    const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -85,7 +85,7 @@ function booking() {
                 })
 
                     Toast.fire({
-                    icon: 'success',
+                    icon: 'error',
                     title: res.message
                 })
             }
