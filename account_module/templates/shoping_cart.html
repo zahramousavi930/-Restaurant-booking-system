@@ -188,46 +188,43 @@ dashboard
     </div>
 
 
- <div class="m-4">
-<h2 class="my-5">reserve</h2>
-     <form method="post">
 
-     <table class="table table-striped table-dark">
 
-  <thead>
 
+<h2 class="m-4">sopping cart</h2>
+<div class="container">
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-        <th scope="col">number of guests</th>
-        <th scope="col">date</th>
-        <th scope="col">time</th>
-        <th scope="col">edit info</th>
 
-
-
+      <th scope="col">name</th>
+      <th scope="col">price</th>
+      <th scope="col">count</th>
+      <th scope="col">decline</th>
+      <th scope="col">increase</th>
+      <th scope="col">remove</th>
     </tr>
   </thead>
   <tbody>
-  {% for foo in reserv %}
-    <tr>
-            <td>{{ foo.number_of_guests }}</td>
-            <td>{{ foo.date }}</td>
-            <td>{{ foo.timee }}</td>
-        <td><a href="{% url 'edit-dashboard' foo.pk%}" class="btn btn-warning">edit </a></td>
+  {% for foo in order.orderdetail_set.all  %}
 
+   <tr>
+      <td>{{ foo.food.food_name}}</td>
+     <td>{{ foo.food.price}} $</td>
+     <td>{{ foo.count}}</td>
+     <td><button class="btn btn-warning">-</button></td>
+     <td><button class="btn btn-warning">+</button></td>
+     <td><button class="btn btn-danger">&times;</button></td>
 
-      </tr>
-        {% endfor %}
+    </tr>
 
-
-
-
-
+  {% endfor %}
 
   </tbody>
 </table>
-       </form>
-</div>
 
+<p class="btn btn-primary " >final price: $ {{ sum }} </p>
+</div>
 
 
 

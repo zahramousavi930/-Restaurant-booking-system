@@ -29,9 +29,9 @@ class OrderDetail(models.Model):
     count = models.IntegerField()
 
     def get_total_price(self):
-        return self.count * self.product.price
+        return self.count * self.food.price
 
     def __str__(self):
         return str(self.order)
 
-  \
+

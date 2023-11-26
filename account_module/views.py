@@ -12,7 +12,8 @@ from food_module.models import User
 import json
 from .utils.email_service import send_email
 import time
-from food_module.models import User,reservation
+from food_module.models import User,reservation,Food_menu
+from .models import Order ,OrderDetail
 # from utils.email_service import send_email
 
 
@@ -229,12 +230,70 @@ class edit_dsahboard(UpdateView):
 class dsahboard (TemplateView):
     template_name = 'user_dashboard.html'
 
+
     def get_context_data(self, **kwargs):
         context=super(dsahboard, self).get_context_data()
-
         context['reserv']=reservation.objects.filter(add_user=self.request.user).all()
         return context
 
+
+
+class shoping_cart(TemplateView):
+    template_name = 'shoping_cart.html'
+
+    def get_context_data(self, **kwargs):
+      current_order, created = Order.objects.get_or_create(is_paid=False, user_id=self.request.user.id)
+      total_amount = 0
+      for order_detail in current_order.orderdetail_set.all():
+          total_amount += order_detail.food.price * order_detail.count
+
+      context = super(shoping_cart, self).get_context_data()
+      context['order'] = current_order
+      context['sum'] = total_amount
+
+      return context
+
+
+def add_product_to_order(request):
+
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    pk = body['pk']
+    print(pk)
+
+
+
+    if request.user.is_authenticated:
+        food_order = Food_menu.objects.filter(id=pk, is_active=True).first()
+        if food_order is not None:
+             current_order, created = Order.objects.get_or_create(is_paid=False, user_id=request.user.id)
+             current_order_detail = current_order.orderdetail_set.filter(food_id=pk).first()
+             if current_order_detail is not None:
+                 current_order_detail.count += 1
+                 current_order_detail.save()
+             else:
+                new_detail = OrderDetail(order_id=current_order.id, food_id=pk, count=1)
+                new_detail.save()
+
+             return JsonResponse({
+                'status': 'success',
+                'text': 'محصول مورد نظر با موفقیت به سبد خرید شما اضافه شد',
+
+            })
+        else:
+            return JsonResponse({
+                'status': 'not_found',
+                'text': 'محصول مورد نظر یافت نشد',
+                'confirm_button_text': 'مرسییییی',
+                'icon': 'error'
+            })
+    else:
+        return JsonResponse({
+            'status': 'not_auth',
+            'text': 'برای افزودن محصول به سبد خرید ابتدا می بایست وارد سایت شوید',
+            'confirm_button_text': 'ورود به سایت',
+            'icon': 'error'
+        })
 
 
 

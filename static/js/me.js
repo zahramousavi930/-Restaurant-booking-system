@@ -1,3 +1,43 @@
+function add_to_order(pk){
+   function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+
+
+    }
+
+    fetch('/user/add-to-order',{
+          method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+           pk
+
+
+
+        })
+    })
+
+
+
+}
 
 
 

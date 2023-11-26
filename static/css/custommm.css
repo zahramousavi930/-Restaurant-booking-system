@@ -38,3 +38,12 @@ color: #fff;
   background-color: #c82333;
   border-color: #bd2130;
 }
+.shop_btn{
+outline: none;
+  border: none;
+  color: white;
+  background-color: #ffc107;
+  border-radius: 50px;
+  font-size: 25px;
+  width: 40px;
+}
