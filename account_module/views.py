@@ -188,13 +188,13 @@ class ResetPasswordView(View):
         if reset_pass_form.is_valid():
             if user is None:
                 return redirect(reverse('login_register'))
-            user_new_pass = reset_pass_form.cleaned_data.get('id_password')
-            print(user_new_pass)
-            # user.set_password(user_new_pass)
-            # user.email_active_code = get_random_string(72)
-            # user.is_active = True
-            # user.save()
-            # return redirect(reverse('login_register'))
+            user_new_pass = reset_pass_form.cleaned_data.get('password')
+
+            user.set_password(user_new_pass)
+            user.email_active_code = get_random_string(72)
+            user.is_active = True
+            user.save()
+            return redirect(reverse('login_register'))
 
         context = {
             'reset_pass_form': reset_pass_form,
