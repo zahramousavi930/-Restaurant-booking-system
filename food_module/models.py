@@ -29,6 +29,7 @@ class Food_menu(models.Model):
 
 
 
+
     def __str__(self):
         return self.food_name
 
@@ -58,7 +59,7 @@ class reservation(models.Model):
     number_of_guests= models.IntegerField()
     date=models.DateField(null=True)
     timee=models.TimeField(null=True)
-    user=models.ManyToManyField(User,null=True ,blank=True)
+    add_user=models.ManyToManyField(User)
 
     def __str__(self):
         return self.name

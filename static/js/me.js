@@ -39,7 +39,6 @@ function bookingg() {
 
 
 
-
     fetch('',{
           method: 'post',
         credentials: 'include',

@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView
+from django.views.generic.edit import UpdateView
 from django.utils.crypto import get_random_string
 from account_module.forms import RegisterForm, LoginForm, ForgotPasswordForm, ResetPasswordForm
 from food_module.models import User
@@ -214,16 +215,25 @@ def log_out(request):
 
 
 
-class dsahboard(TemplateView):
+class edit_dsahboard(UpdateView):
+    template_name = 'edit_user_dashboard.html'
+    model = reservation
+    fields = ['name','phone','email','number_of_guests','date','timee']
+
+    def get_success_url(self):
+        return reverse('dashboard')
+
+
+
+
+class dsahboard (TemplateView):
     template_name = 'user_dashboard.html'
 
     def get_context_data(self, **kwargs):
         context=super(dsahboard, self).get_context_data()
-        context['user']= User.objects.all()
-        context['reserv']=reservation.objects.filter()
+
+        context['reserv']=reservation.objects.filter(add_user=self.request.user).all()
         return context
-
-
 
 
 

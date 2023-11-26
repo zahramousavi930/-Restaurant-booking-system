@@ -15,6 +15,7 @@ class Home_page(TemplateView):
         context=super(Home_page, self).get_context_data()
         context['foods']=models.Food_menu.objects.filter(is_active=True)
         context['main_comments']=models.Comments.objects.filter(is_aactive=True)
+        context['reserv']=models.reservation.objects.all()
         context['comment'] = comment_form()
 
 
@@ -40,29 +41,34 @@ class Book_table(TemplateView):
         u_time = body['time']
 
 
-
-
-        try:
-            new_reserve=models.reservation(
+        new_reserve=models.reservation(
                 name=u_name,
                 email=u_email,
                 phone=u_phone,
                 number_of_guests=u_number,
                 date=u_date,
-                timee=u_time
-            )
-            new_reserve.save()
+                timee=u_time,
 
-            return JsonResponse({
+            )
+
+        new_reserve.save()
+        a = models.User.objects.get(id=self.request.user.id)
+        new_reserve.add_user.add(a)
+
+
+
+
+
+        return JsonResponse({
                 'status':'ok',
                 'message':'reserve set successfully'
             })
 
-        except:
-            return JsonResponse({
-                'status': 'no',
-                'message':'an error has occurred'
-            })
+        # except:
+        #     return JsonResponse({
+        #         'status': 'no',
+        #         'message':'an error has occurred'
+        #     })
 
 
 
@@ -95,44 +101,6 @@ def comments(request):
             'message': 'there is a problem to save comments'
         })
 
-
-def reserv(request):
-
-
-
-    body_unicode = request.body.decode('utf-8')
-    body = json.loads(body_unicode)
-    u_name= body['name']
-    u_phone = body['phone']
-    u_email = body['email']
-    u_number = body['how_many']
-    u_date = body['date']
-    u_time = body['time']
-
-    if request.user.is_authenticated:
-        set_date= models.reservation(
-            name=u_name,
-            phone=u_phone,
-            email=u_email,
-            number_of_guests=u_number,
-            date=u_date,
-            timee=u_time
-
-        )
-
-        set_date.save()
-
-
-
-        return JsonResponse({
-            'status': 'ok',
-            'message':' reserve was successfully'
-        })
-    else:
-        return JsonResponse({
-            'status': 'no',
-            'message': 'please login or register first'
-        })
 
 
 
