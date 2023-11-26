@@ -54,7 +54,7 @@ class LoginForm(forms.Form):
 class ForgotPasswordForm(forms.Form):
     email = forms.EmailField(
         label='email',
-        widget=forms.EmailInput(attrs={'placeholder':'enter email','class':'form-control'}),
+        widget=forms.EmailInput(attrs={'placeholder':'enter email','class':'form-control forget'}),
         validators=[
             validators.MaxLengthValidator(100),
             validators.EmailValidator

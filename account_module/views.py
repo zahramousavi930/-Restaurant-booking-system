@@ -9,6 +9,7 @@ from account_module.forms import RegisterForm, LoginForm, ForgotPasswordForm, Re
 from food_module.models import User
 import json
 from .utils.email_service import send_email
+import time
 # from utils.email_service import send_email
 
 
@@ -51,6 +52,8 @@ class RegisterView(View):
                     username=u_username)
                 new_user.set_password(u_pass)
                 new_user.save()
+
+                time.sleep(.3)
 
 
                 send_email(subject='active account',to=new_user.email, context={'user':new_user},template_name='activate_account.html')
@@ -112,19 +115,21 @@ def login_req( request):
 
 class ActivateAccountView(View):
     def get(self, request, email_active_code):
-        user: User = User.objects.filter(email_active_code__iexact=email_active_code).first()
-        if user is not None:
-            if not user.is_active:
-                user.is_active = True
-                user.email_active_code = get_random_string(72)
-                user.save()
-                # todo: show success message to user
-                return redirect(reverse('login_page'))
-            else:
-                # todo: show your account was activated message to user
-                pass
 
-        raise Http404
+
+        user: User = User.objects.filter(email_active_code__iexact=email_active_code).first()
+        if user :
+            if not user.is_active:
+                user.is_active=True
+                user.email_active_code =get_random_string(72)
+                user.save()
+                return redirect(reverse('home_page'))
+            else:
+                return redirect(reverse('home_page'))
+
+
+
+
 
 
 
@@ -133,19 +138,33 @@ class ForgetPasswordView(View):
     def get(self, request: HttpRequest):
         forget_pass_form = ForgotPasswordForm()
         context = {'forget_pass_form': forget_pass_form}
-        return render(request, 'account_module/forgot_password.html', context)
+        return render(request, 'forget_password.html', context)
 
     def post(self, request: HttpRequest):
-        forget_pass_form = ForgotPasswordForm(request.POST)
-        if forget_pass_form.is_valid():
-            user_email = forget_pass_form.cleaned_data.get('email')
-            user: User = User.objects.filter(email__iexact=user_email).first()
-            if user is not None:
-                #send_email('بازیابی کلمه عبور', user.email, {'user': user}, 'emails/forgot_password.html')
-                return redirect(reverse('home_page'))
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        u_email = body['user_email']
 
-        context = {'forget_pass_form': forget_pass_form}
-        return render(request, 'account_module/forgot_password.html', context)
+
+
+        if u_email :
+
+            user: User = User.objects.filter(email__iexact=u_email).first()
+            if user is not None:
+                send_email(' reset password', user.email, {'user': user}, 'email_forgot_pass.html')
+                return JsonResponse({
+                    'status':'ok',
+                    'message':'reset password link send to your email'
+
+                })
+
+        return JsonResponse({
+            'status': 'no',
+            'message': 'email can not find or it is not active!'
+        })
+
+
+
 
 
 class ResetPasswordView(View):

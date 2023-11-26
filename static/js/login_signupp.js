@@ -229,8 +229,8 @@ function forget_pass() {
         'X-CSRFToken': csrftoken,
     }
 
-      const user_email = document.getElementById('l_email').value
-    const user_pass = document.getElementById('l_password').value
+      const user_email = document.getElementById('id_email').value
+
 
     fetch('/user/forget_pass',
         {
@@ -238,15 +238,51 @@ function forget_pass() {
         credentials: 'include',
         headers ,
         body : JSON.stringify({
-           user_email,
-
-            user_pass
+           user_email
         }),
          redirect: 'follow'
         }
 
         ).then(response=>{
-        console.log('okkkkk')
+        response.json().then(res=>{
+             if(res.status === 'ok'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'success',
+                    title: res.message
+                })
+            }
+
+              if(res.status === 'no'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
+        })
     })
 
 }
