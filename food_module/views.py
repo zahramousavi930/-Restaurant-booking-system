@@ -64,11 +64,6 @@ class Book_table(TemplateView):
                 'message':'reserve set successfully'
             })
 
-        # except:
-        #     return JsonResponse({
-        #         'status': 'no',
-        #         'message':'an error has occurred'
-        #     })
 
 
 
@@ -109,11 +104,11 @@ def like_part(request,pk):
     if request.user.is_authenticated:
         post=get_object_or_404(models.Food_menu ,id=pk)
         liked=False
-        if post.like.filter(id=request.user.id).exists():
-            post.like.remove(request.user)
+        if post.like_user.filter(id=request.user.id).exists():
+            post.like_user.remove(request.user)
             liked=False
         else:
-            post.like.add(request.user)
+            post.like_user.add(request.user)
             liked=True
 
 

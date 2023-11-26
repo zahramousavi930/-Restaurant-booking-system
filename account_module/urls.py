@@ -13,5 +13,7 @@ urlpatterns = [
     path('reset_pass/<active_code>', views.ResetPasswordView.as_view(), name='reset_password_page'),
     path('add-to-order', views.add_product_to_order, name='add_product_to_order'),
     path('add-to-shopping_cart', views.shoping_cart.as_view(), name='shoping_cart'),
+    path('remove', views.modify_order_detail, name='modify_order'),
+    path('remove_reserv', views.remove_reserv, name='remove_reserv'),
 
 ]

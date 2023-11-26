@@ -231,11 +231,21 @@ class dsahboard (TemplateView):
     template_name = 'user_dashboard.html'
 
 
+
+
     def get_context_data(self, **kwargs):
         context=super(dsahboard, self).get_context_data()
         context['reserv']=reservation.objects.filter(add_user=self.request.user).all()
         return context
 
+    def post(self,request):
+        if request.GET.get('remove'):
+            print('wesarferf')
+
+
+        return JsonResponse({
+            'stat':'wserf'
+        })
 
 
 class shoping_cart(TemplateView):
@@ -277,23 +287,55 @@ def add_product_to_order(request):
 
              return JsonResponse({
                 'status': 'success',
-                'text': 'محصول مورد نظر با موفقیت به سبد خرید شما اضافه شد',
+                'message':' order add to cart',
 
             })
         else:
             return JsonResponse({
                 'status': 'not_found',
-                'text': 'محصول مورد نظر یافت نشد',
-                'confirm_button_text': 'مرسییییی',
-                'icon': 'error'
+                'message': 'food dose not exists',
+
             })
     else:
         return JsonResponse({
             'status': 'not_auth',
-            'text': 'برای افزودن محصول به سبد خرید ابتدا می بایست وارد سایت شوید',
-            'confirm_button_text': 'ورود به سایت',
-            'icon': 'error'
+            'message': 'please login then order!',
+
         })
+
+
+
+
+def remove_reserv(request):
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    pk = body['pk']
+
+    reserv=reservation.objects.filter(id=pk).delete()
+
+    return JsonResponse({
+        'status':'ok'
+    })
+
+
+
+
+def modify_order_detail(request):
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    pk = body['pk']
+
+
+
+
+    m=OrderDetail.objects.filter(food_id=pk,order__user_id=request.user.id)
+    m.delete()
+    return JsonResponse({
+        'status': 'ok'
+    })
+
+
+
 
 
 

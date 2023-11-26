@@ -25,8 +25,8 @@ class Food_menu(models.Model):
     food_time=models.TimeField(auto_now_add=True)
     Classification=models.ForeignKey('Classification_food',on_delete=models.CASCADE ,blank=False)
     discount=models.IntegerField(blank=True)
-    like_user = models.ManyToManyField(User ,null=True,blank=True,related_name='like_part')
-    user_order=models.ManyToManyField(User,null=True,blank=True,related_name='user_order')
+    like_user = models.ManyToManyField(User ,blank=True,related_name='like_part')
+    user_order=models.ManyToManyField(User,blank=True,related_name='user_order')
 
 
 

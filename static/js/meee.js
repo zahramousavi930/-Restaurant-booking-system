@@ -1,3 +1,105 @@
+
+
+function remove_reserv(pk) {
+    console.log(pk)
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+
+
+    }
+
+    fetch('remove_reserv',{
+              method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+           pk
+
+
+
+        })
+    }).then(res=>{
+        res.json().then(response=>{
+            if(response.status ==='ok'){
+                window.location.href ='dashboard'
+            }
+        })
+    })
+}
+
+
+
+function modify_order(pk){
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+
+
+    }
+    console.log(pk)
+    fetch('remove',{
+ method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+           pk
+
+
+
+        })
+    }).then(res=>{
+        res.json().then(response=>{
+            if(response.status === 'ok'){
+                window.location.href='add-to-shopping_cart'
+            }
+        })
+    })
+
+}
+
+
+
+
+
+
+
+
 function add_to_order(pk){
    function getCookie(name) {
         let cookieValue = null;
@@ -23,7 +125,8 @@ function add_to_order(pk){
 
     }
 
-    fetch('/user/add-to-order',{
+    fetch('/user/remove_reserv',
+        {
           method: 'post',
         credentials: 'include',
         headers ,
@@ -32,6 +135,63 @@ function add_to_order(pk){
 
 
 
+        })
+    }).then(response=>{
+        response.json().then(res=>{
+            if(res.status === 'success'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'success',
+                    title: res.message
+                })
+            }
+            if(res.status === 'not_found'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
+            if(res.status === 'not_auth'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
         })
     })
 
