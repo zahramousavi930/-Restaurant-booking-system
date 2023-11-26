@@ -58,6 +58,7 @@ class reservation(models.Model):
     number_of_guests= models.IntegerField()
     date=models.DateField(null=True)
     timee=models.TimeField(null=True)
+    user=models.ManyToManyField(User,null=True ,blank=True)
 
     def __str__(self):
         return self.name

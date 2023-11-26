@@ -1,15 +1,17 @@
 
 from django.contrib.auth import login, logout
-from django.http import Http404, HttpRequest, JsonResponse
+from django.http import  HttpRequest, JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
+from django.views.generic import TemplateView
 from django.utils.crypto import get_random_string
 from account_module.forms import RegisterForm, LoginForm, ForgotPasswordForm, ResetPasswordForm
 from food_module.models import User
 import json
 from .utils.email_service import send_email
 import time
+from food_module.models import User,reservation
 # from utils.email_service import send_email
 
 
@@ -212,13 +214,16 @@ def log_out(request):
 
 
 
-class dsahboard(View):
+class dsahboard(TemplateView):
+    template_name = 'user_dashboard.html'
 
-    def get(self):
-        pass
+    def get_context_data(self, **kwargs):
+        context=super(dsahboard, self).get_context_data()
+        context['user']= User.objects.all()
+        context['reserv']=reservation.objects.filter()
+        return context
 
-    def post(self):
-        pass
+
 
 
 
