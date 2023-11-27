@@ -311,14 +311,14 @@ def remove_reserv(request):
     body = json.loads(body_unicode)
     pk = body['pk']
 
-    reserv=reservation.objects.filter(id=pk).delete()
+    try:
+        reserv = reservation.objects.filter(id=pk).delete()
 
-    return JsonResponse({
-        'status':'ok'
-    })
-
-
-
+        return JsonResponse({
+            'status': 'ok'
+        })
+    except:
+        pass
 
 def modify_order_detail(request):
     body_unicode = request.body.decode('utf-8')
@@ -326,13 +326,18 @@ def modify_order_detail(request):
     pk = body['pk']
 
 
+    try:
+        m = OrderDetail.objects.filter(food_id=pk, order__user_id=request.user.id)
+        m.delete()
+        return JsonResponse({
+            'status': 'ok'
+        })
+
+    except:
+        pass
 
 
-    m=OrderDetail.objects.filter(food_id=pk,order__user_id=request.user.id)
-    m.delete()
-    return JsonResponse({
-        'status': 'ok'
-    })
+
 
 
 
