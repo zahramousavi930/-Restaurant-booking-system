@@ -12,18 +12,21 @@ from food_module.models import User
 import json
 from .utils.email_service import send_email
 import time
-from food_module.models import User,reservation,Food_menu
+from food_module.models import User,reservation,Food_menu ,Footer_data
 from .models import Order ,OrderDetail
 # from utils.email_service import send_email
 
 
 class RegisterView(View):
+
     def get(self, request):
+        footer = Footer_data.objects.get()
         login_form = LoginForm()
         register_form = RegisterForm()
         context = {
             'register_form': register_form,
-            'login_form': login_form
+            'login_form': login_form,
+            'footer':footer
         }
 
         return render(request, 'login_register.html', context)
@@ -141,7 +144,9 @@ class ActivateAccountView(View):
 class ForgetPasswordView(View):
     def get(self, request: HttpRequest):
         forget_pass_form = ForgotPasswordForm()
-        context = {'forget_pass_form': forget_pass_form}
+        footer = Footer_data.objects.get()
+        context = {'forget_pass_form': forget_pass_form,
+                   'footer':footer}
         return render(request, 'forget_password.html', context)
 
     def post(self, request: HttpRequest):
@@ -179,10 +184,11 @@ class ResetPasswordView(View):
             return redirect(reverse('login_register'))
 
         reset_pass_form = ResetPasswordForm()
-
+        footer = Footer_data.objects.get()
         context = {
             'reset_pass_form': reset_pass_form,
-            'user': user
+            'user': user,
+            'footer':footer
         }
         return render(request, 'reset_password.html', context)
 
@@ -221,6 +227,10 @@ class edit_dsahboard(UpdateView):
     model = reservation
     fields = ['name','phone','email','number_of_guests','date','timee']
 
+    def get_context_data(self, **kwargs):
+        context =super(edit_dsahboard, self).get_context_data()
+        context['footer']= Footer_data.objects.get()
+        return context
     def get_success_url(self):
         return reverse('dashboard')
 
@@ -235,6 +245,7 @@ class dsahboard (TemplateView):
 
     def get_context_data(self, **kwargs):
         context=super(dsahboard, self).get_context_data()
+        context['footer'] = Footer_data.objects.get()
         context['reserv']=reservation.objects.filter(add_user=self.request.user).all()
         return context
 
@@ -260,6 +271,7 @@ class shoping_cart(TemplateView):
       context = super(shoping_cart, self).get_context_data()
       context['order'] = current_order
       context['sum'] = total_amount
+      context['footer'] = Footer_data.objects.get()
 
       return context
 
