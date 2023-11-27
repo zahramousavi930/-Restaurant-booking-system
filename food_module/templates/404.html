@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'header_refrences.html' %}
+</head>
+<body>
+<div class="m-4 container page_bot_found">
+    <img src="{% static 'images/not_found.jpg' %}" alt="404 page">
+
+    <br>
+    <br>
+    <br>
+
+<a href="{% url 'home_page' %}"> back home page</a>
+</div>
+
+</body>
+</html>
