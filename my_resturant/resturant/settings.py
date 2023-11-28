@@ -31,8 +31,8 @@ SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['django-resturant-dc830834c6f2.herokuapp.com','https://django-resturant-dc830834c6f2.herokuapp.com/','http://django-resturant-dc830834c6f2.herokuapp.com/']
-ALLOWED_HOSTS =[]
+ALLOWED_HOSTS = ['8000-zahramousav-restaurantb-q91mqx5cni7.ws-eu106.gitpod.io','https://django-resturant-dc830834c6f2.herokuapp.com/','http://django-resturant-dc830834c6f2.herokuapp.com/']
+
 
 # Application definition
 

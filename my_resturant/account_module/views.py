@@ -20,7 +20,7 @@ from .models import Order ,OrderDetail
 class RegisterView(View):
 
     def get(self, request):
-        footer = Footer_data.objects.get()
+        footer = Footer_data.objects.all()
         login_form = LoginForm()
         register_form = RegisterForm()
         context = {
@@ -184,7 +184,7 @@ class ResetPasswordView(View):
             return redirect(reverse('login_register'))
 
         reset_pass_form = ResetPasswordForm()
-        footer = Footer_data.objects.get()
+        footer = Footer_data.objects.all()
         context = {
             'reset_pass_form': reset_pass_form,
             'user': user,
@@ -229,7 +229,7 @@ class edit_dsahboard(UpdateView):
 
     def get_context_data(self, **kwargs):
         context =super(edit_dsahboard, self).get_context_data()
-        context['footer']= Footer_data.objects.get()
+        context['footer']= Footer_data.objects.all()
         return context
     def get_success_url(self):
         return reverse('dashboard')
@@ -245,7 +245,7 @@ class dsahboard (TemplateView):
 
     def get_context_data(self, **kwargs):
         context=super(dsahboard, self).get_context_data()
-        context['footer'] = Footer_data.objects.get()
+        context['footer'] = Footer_data.objects.all()
         context['reserv']=reservation.objects.filter(add_user=self.request.user).all()
         return context
 
@@ -271,7 +271,7 @@ class shoping_cart(TemplateView):
       context = super(shoping_cart, self).get_context_data()
       context['order'] = current_order
       context['sum'] = total_amount
-      context['footer'] = Footer_data.objects.get()
+      context['footer'] = Footer_data.objects.all()
 
       return context
 
