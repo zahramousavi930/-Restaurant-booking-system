@@ -1,7 +1,5 @@
 from django import forms
 from django.core import validators
-from .models import Comments
-from django.forms import ModelForm
 
 
 

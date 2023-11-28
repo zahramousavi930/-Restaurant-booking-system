@@ -1,21 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>404</title>
+    <style>
+
+
+
+    </style>
     {% include 'header_refrences.html' %}
+
 </head>
 <body>
-<div class="m-4 container page_bot_found">
-    <img src="{% static 'images/not_found.jpg' %}" alt="404 page">
+<div class="container my-4 not_found_div" >
+    <p>404 error</p>
 
-    <br>
-    <br>
-    <br>
+    <p>page not found!</p>
 
-<a href="{% url 'home_page' %}"> back home page</a>
+
+<img class="img-fluid not_found" src="{% static 'images/hero-bg.jpg' %}" alt="">
+
+<br>
+<br>
+<br>
+<a href="{% url 'home_page' %}"> back to Home</a>
 </div>
+
+
 
 </body>
 </html>
