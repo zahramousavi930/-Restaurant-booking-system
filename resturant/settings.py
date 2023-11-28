@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os ,sys
 from pathlib import Path
 import dj_database_url
 
@@ -21,39 +21,7 @@ if os.path.isfile('env.py'):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
-                       'pathname=%(pathname)s lineno=%(lineno)s ' +
-                       'funcname=%(funcName)s %(message)s'),
-            'datefmt': '%Y-%m-%d %H:%M:%S'
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        }
-    },
-    'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'logging.NullHandler',
-        },
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-            'stream': sys.stdout,
-        }
-    },
-    'loggers': {
-        'MYAPP': {
-            'handlers': ['console'],
-            'level': 'INFO',
-        }
-    }
-}
+
 
 
 
@@ -65,8 +33,8 @@ SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-DEBUG_PROPAGATE_EXCEPTIONS = True
-CSRF_TRUSTED_ORIGINS=['django-resturant-dc830834c6f2.herokuapp.com/','https://django-resturant-dc830834c6f2.herokuapp.com/','https://django-resturant-dc830834c6f2.herokuapp.com/','django-resturant-dc830834c6f2.herokuapp.com']
+
+
 ALLOWED_HOSTS =['django-resturant-dc830834c6f2.herokuapp.com/','https://django-resturant-dc830834c6f2.herokuapp.com/','https://django-resturant-dc830834c6f2.herokuapp.com/','django-resturant-dc830834c6f2.herokuapp.com']
 
 # Application definition
@@ -176,18 +144,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
+STATIC_URL = '/static/'
+
 MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/medias/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-    'static'
+    BASE_DIR / 'static'
 ]
-
-STATIC_URL = '/static/'
-
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
