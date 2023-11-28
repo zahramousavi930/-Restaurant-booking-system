@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['ckz8799-django-resturan-app-ca8440d02039.herokuapp.com','https://ckz8799-django-resturan-app-ca8440d02039.herokuapp.com/','http://ckz8799-django-resturan-app-ca8440d02039.herokuapp.com/']
+ALLOWED_HOSTS = []
 
 
 # Application definition
