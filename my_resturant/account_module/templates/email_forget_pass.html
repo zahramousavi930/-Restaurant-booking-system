@@ -1,9 +1,25 @@
-<div dir="rtl">
-    <h2>  reset password</h2>
-    <hr>
-    <p>   for recovery your pssword please open below link in your browser</p>
-    <p>
-        <a href="http://localhost:456{% url 'reset_password_page' active_code=user.email_active_code %}">
-              reset password </a>
-    </p>
-</div>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>active account</title>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeLg5rVQxS9rybm_OULK_DwsGX4YNynby-lrXUyLby&s">
+</head>
+<body>
+    <div>
+        <h2>  reset password</h2>
+        <hr>
+        <p>   for recovery your pssword please open below link in your browser</p>
+        <p>
+            <a href="http://localhost:456{% url 'reset_password_page' active_code=user.email_active_code %}">
+                  reset password </a>
+        </p>
+    </div>
+</body>
+</html>
+
+
+
