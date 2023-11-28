@@ -1,1 +1,3 @@
+import gunicorn
+
 web: gunicorn resturant.wsgi:application
