@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS =['django-resturant-dc830834c6f2.herokuapp.com',' https://django-resturant-dc830834c6f2.herokuapp.com/',' https://django-resturant-dc830834c6f2.herokuapp.com',' http://django-resturant-dc830834c6f2.herokuapp.com/']
@@ -144,19 +144,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
-STATIC_URL = '/static/'
 
 MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/medias/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
 
 
 
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_URL = '/static/' 
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ] 
+STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic') 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
