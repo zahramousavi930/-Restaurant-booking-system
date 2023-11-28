@@ -2,7 +2,13 @@ asgiref==3.7.2
 dj-database-url==0.5.0
 Django==4.2.7
 django-widget-tweaks==1.5.0
+gevent==23.9.1
+greenlet==3.0.1
 gunicorn==21.2.0
+passlib==1.7.4
 Pillow==10.1.0
 psycopg2-binary==2.9.9
 sqlparse==0.4.4
+whitenoise==6.6.0
+zope.event==5.0
+zope.interface==6.1
