@@ -25,22 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-        },
-    },
-}
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -49,7 +33,7 @@ SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+DEBUG_PROPAGATE_EXCEPTIONS = True
 ALLOWED_HOSTS =['django-resturant-dc830834c6f2.herokuapp.com/','https://django-resturant-dc830834c6f2.herokuapp.com/','https://django-resturant-dc830834c6f2.herokuapp.com/','django-resturant-dc830834c6f2.herokuapp.com']
 # Application definition
 
@@ -64,8 +48,11 @@ INSTALLED_APPS = [
     'account_module',
 
     'widget_tweaks',
+   
 
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
