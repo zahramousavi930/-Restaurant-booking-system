@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # 'django.contrib.staticfiles',
     'food_module',
     'account_module',
 
@@ -183,3 +183,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'bookingsystemresturant@gmail.com'
 EMAIL_HOST_PASSWORD = 'njnmzovebbklmsxd'
 EMAIL_PORT = 587
+
+
+
+
+django_heroku.settings(locals(),staticfiles=False)
