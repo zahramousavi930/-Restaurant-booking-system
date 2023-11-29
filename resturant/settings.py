@@ -22,7 +22,7 @@ if os.path.isfile('env.py'):
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-django_heroku.settings(locals(), staticfiles=False)
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,7 +35,7 @@ SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+
 DEBUG = False
 
 
-ALLOWED_HOSTS =['*']
+ALLOWED_HOSTS =[]
 # Application definition
 
 INSTALLED_APPS = [
