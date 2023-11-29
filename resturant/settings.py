@@ -14,7 +14,7 @@ from pathlib import Path
 import os ,sys
 from pathlib import Path
 import dj_database_url
-
+import django_heroku
 if os.path.isfile('env.py'):
     import env
 
@@ -22,7 +22,7 @@ if os.path.isfile('env.py'):
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
+django_heroku.settings(locals(), staticfiles=False)
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +39,7 @@ ALLOWED_HOSTS =['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'cloudinary_storage',
+     "whitenoise.runserver_nostatic",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'account_module',
 
     'widget_tweaks',
-     'cloudinary',
+    
 
 ]
 
@@ -156,13 +156,13 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/medias/'
 
 
-
-
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_URL = '/static/' 
-# STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ] 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic') 
-
+STORAGES = {
+    
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 
