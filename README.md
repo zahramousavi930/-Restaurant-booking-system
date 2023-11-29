@@ -1,4 +1,18 @@
 # -Restaurant-booking-system
+
+main frameworks and languages: 
+python, 
+django,
+postger database 
+JavaScript, 
+html,
+css ,
+sass, 
+bootstrap , 
+bootstrap icon
+,fontawesome
+
+
 Restaurant site is use for reserve and buy online food for all user you can book a table any time and any day that you want.
 
 ![1](https://github.com/zahramousavi930/-Restaurant-booking-system/assets/102755356/59e81f82-622a-4ebc-847a-39b23b07dcfb)
@@ -59,3 +73,14 @@ The HTML templates include descriptive meta tags that enhance search engine visi
 
 Search engine optimization (SEO) techniques to improve organic visibility and attract potential customers.
 
+
+
+Deployment
+I deployed this website by using GitPod, heroku and following the below steps:
+
+Gitpod and heroku pages deployment
+
+Log in to Github 
+login  to heroku
+use gitpod to deploy and commit change things to GitHub
+add Procfile  and gunicorn for run code in heroku
