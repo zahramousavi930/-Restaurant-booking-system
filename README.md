@@ -21,14 +21,21 @@ Forms:
 
 users can leave comment, signup , login, reset password, reservation with forms and they can access to their reserve info in shopping cart or panel.
 
+User Registration and Authentication: Users can register, log in, and log out without any issues.
+
+
+Testing: Detailed testing write-ups are provided in the GitHub repository, documenting the test scenarios, methodologies, and results.
+
 
 commens and food:
+
 after create food admin must active it to show in Maine page.
 user after leav comment admin could ready it and then show it to main page.
 
 
 
 Custom 404 Error:
+
 A custom 404 error page is implemented to provide a user-friendly experience when a page is not found.
 
 
@@ -39,3 +46,16 @@ Custom of reaturant Models :
 2-Users can leave comment and like food of menu.
 
 3- Users can track the status of their orders and reservation.
+
+
+
+other feature:
+
+Social media marketing through platforms like Facebook and Instagram to reach and engage with the target audience.
+
+Influencer collaborations and partnerships to increase brand visibility and generate sales.
+
+The HTML templates include descriptive meta tags that enhance search engine visibility and provide meaningful information about the website's pages.
+
+Search engine optimization (SEO) techniques to improve organic visibility and attract potential customers.
+
