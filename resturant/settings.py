@@ -40,6 +40,7 @@ ALLOWED_HOSTS =['https://django-resturant-dc830834c6f2.herokuapp.com/','http://d
 
 INSTALLED_APPS = [
      "whitenoise.runserver_nostatic",
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'account_module',
 
     'widget_tweaks',
+    'cloudinary',
     
 
 ]
@@ -154,6 +156,8 @@ USE_TZ = True
 
 MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/medias/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 STATIC_URL='/static/'
 
