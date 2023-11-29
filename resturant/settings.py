@@ -39,6 +39,7 @@ ALLOWED_HOSTS =['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
     'account_module',
 
     'widget_tweaks',
-   
+     'cloudinary',
 
 ]
 
@@ -87,6 +88,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'resturant.wsgi.application'
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dggry4oz1',
+    'API_KEY': '619785319395311',
+    'API_SECRET': 'tCzuwcSoxBJ8zP1xoSt1INUakto'
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -106,6 +113,7 @@ DATABASES={
 AUTH_USER_MODEL = 'food_module.User'
 
 
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 
 # Password validation
@@ -150,11 +158,16 @@ MEDIA_URL = '/medias/'
 
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/static/' 
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ] 
-STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic') 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ] 
+# STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic') 
+
+
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
