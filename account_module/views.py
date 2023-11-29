@@ -20,7 +20,7 @@ from .models import Order ,OrderDetail
 class RegisterView(View):
 
     def get(self, request):
-        footer = Footer_data.objects.all()
+        footer = Footer_data.objects.get()
         login_form = LoginForm()
         register_form = RegisterForm()
         context = {
@@ -184,7 +184,7 @@ class ResetPasswordView(View):
             return redirect(reverse('login_register'))
 
         reset_pass_form = ResetPasswordForm()
-        footer = Footer_data.objects.all()
+        footer = Footer_data.objects.get()
         context = {
             'reset_pass_form': reset_pass_form,
             'user': user,
