@@ -84,3 +84,10 @@ Log in to Github
 login  to heroku
 use gitpod to deploy and commit change things to GitHub
 add Procfile  and gunicorn for run code in heroku
+
+
+
+
+
+test all part of views and form bu inner framework of django test
+user must login first then use all feature of a site
