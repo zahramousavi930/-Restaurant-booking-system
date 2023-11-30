@@ -101,7 +101,10 @@ def comments(request):
 
 
 
-def like_part(request,pk):
+def like_part(request):
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    pk = body['pk']
 
     if request.user.is_authenticated:
         post=get_object_or_404(models.Food_menu ,id=pk)

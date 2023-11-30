@@ -332,10 +332,13 @@
                         </form>
 
 
-                         <div class="like_part">
-                        <a type="button" id="like_btn" href="{% url 'like' food.pk %}"><i class="bi bi-heart-fill"></i> </a>
-                       <span>{{ food.like_user.count }}</span>
-                         </div>
+                        <div class="like_part">
+                          <form action="{% url 'like' %}" method="post">
+                              {% csrf_token %}
+                     <button onclick="loginFirst({{food.pk}})" type="button" id="like_btn" ><i class="bi bi-heart-fill"></i> </button>
+                    <span>{{ food.like_user.count }}</span>
+                          </form>
+                      </div>
 
 
 
