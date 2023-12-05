@@ -89,5 +89,8 @@ add Procfile  and gunicorn for run code in heroku
 
 
 
-test all part of views and form bu inner framework of django test
+test all part of views and form by inner framework of django test
 user must login first then use all feature of a site
+
+
+![Capture](https://github.com/zahramousavi930/-Restaurant-booking-system/assets/102755356/e7f2c7c9-5456-405b-a0ee-a59a7556eaa1)
