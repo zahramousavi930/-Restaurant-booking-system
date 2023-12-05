@@ -18,7 +18,7 @@ Restaurant site is use for reserve and buy online food for all user you can book
 ![1](https://github.com/zahramousavi930/-Restaurant-booking-system/assets/102755356/59e81f82-622a-4ebc-847a-39b23b07dcfb)
 
 
-Demo like: 
+Demo like:  https://django-resturant-dc830834c6f2.herokuapp.com/
 
 Features
 
