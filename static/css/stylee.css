@@ -411,7 +411,7 @@ a:focus {
   margin-top: 45px;
   border-radius: 5px;
   padding: 20px 15px;
-  background-color: #222831;
+  background-color: #eb5e28;
   color: #ffffff;
 }
 
@@ -424,7 +424,6 @@ a:focus {
   -webkit-transition: all 0.1 0.5s;
   transition: all 0.1 0.5s;
   border-radius: 100%;
-  border: 5px solid #ffbe33;
   overflow: hidden;
 }
 
@@ -453,7 +452,7 @@ a:focus {
 .offer_section .box .detail-box a {
   display: inline-block;
   padding: 10px 30px;
-  background-color: #ffbe33;
+  background-color: #252422;
   color: #ffffff;
   border-radius: 45px;
   -webkit-transition: all 0.3s;
@@ -510,11 +509,11 @@ a:focus {
   color: #ffffff;
   border-radius: 15px;
   overflow: hidden;
-  background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
+  background: linear-gradient(to bottom, #f1f2f3 25px, #324a5f 25px);
 }
 
 .food_section .box .img-box {
-  background: #f1f2f3;
+  background: #ff6700;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

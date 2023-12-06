@@ -144,66 +144,99 @@
                       <p>
                         Nestled in the heart of the city, the restaurant presents an inviting facade with its warm lighting and elegant signage. As guests step inside, they are greeted by a sophisticated yet comfortable atmosphere, where soft music complements the gentle murmur of conversation. The interior, tastefully decorated with artwork and ambient lighting, creates a welcoming space that blends modern style with classic comfort.
                         </p>
-                      <div class="btn-box">
-                        <a href="{% url 'home_page' %}" class="btn1"> order now </a>
-                      </div>
+                 
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-7 col-lg-6">
-                    <div class="detail-box">
-                      <h1> fast food </h1>
-                      <p>
-                        The restaurant's menu is a testament to culinary excellence, offering a diverse selection of dishes that cater to various tastes and dietary preferences. Each dish, carefully crafted by skilled chefs, showcases a blend of fresh, high-quality ingredients and bold flavors. The attentive staff, knowledgeable about the menu, are always ready to offer recommendations, ensuring a delightful dining experience tailored to each guest.
-                          </p>
-                      <div class="btn-box">
-                        <a href="{% url 'home_page' %}" class="btn1"> order now   </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-7 col-lg-6">
-                    <div class="detail-box">
-                      <h1> fast food</h1>
-                      <p>
-                        Beyond the exceptional food, the restaurant prides itself on creating memorable experiences. Whether it's a casual meal with friends, a romantic dinner for two, or a special family celebration, the ambiance sets the perfect tone. As the evening progresses, the soft glow of candles adds to the charm, making the restaurant not just a place to eat, but a destination for those who appreciate fine dining in a relaxed and elegant setting.
-                          </p>
-                      <div class="btn-box">
-                        <a href="{% url 'home_page' %}" class="btn1"> order now   </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
           </div>
-          <div class="container">
-            <ol class="carousel-indicators">
-              <li
-                data-target="#customCarousel1"
-                data-slide-to="0"
-                class="active"
-              ></li>
-              <li data-target="#customCarousel1" data-slide-to="1"></li>
-              <li data-target="#customCarousel1" data-slide-to="2"></li>
-            </ol>
-          </div>
+          
         </div>
       </section>
       <!-- end slider section -->
     </div>
 
     <!-- offer section -->
+
+
+    <!-- end offer section -->
+
+    <!-- food section -->
+
+    <section class="food_section layout_padding-bottom">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2 id="menu">menu</h2>
+        </div>
+
+
+        <div class="filters-content">
+          <div class="row grid">
+          {% for food in foods %}
+
+
+
+            <div class="col-sm-6 col-lg-4 all">
+
+                   <div class="box">
+                <div>
+                  <div class="img-box">
+                    <img src="{{ food.image.url }}" alt="{{ food.food_name }}" />
+                  </div>
+                  <div class="detail-box">
+                    <h5>{{ food.food_name }}</h5>
+                    <p>
+                        {{ food.about_food }}
+                    </p>
+                    <div class="options">
+                      <h6>$ {{ food.price }}</h6>
+
+                        <form action="{% url 'add_product_to_order'  %}">
+
+                             <button class="shop_btn" type="button" onclick="add_to_order({{ food.pk }})">
+                                 <i class="bi bi-cart3"></i>
+
+                          </button>
+                        </form>
+
+
+                        <div class="like_part">
+                          <form action="{% url 'like' %}" method="post">
+                              {% csrf_token %}
+                     <button onclick="loginFirst({{food.pk}})" type="button" id="like_btn" ><i class="bi bi-heart-fill"></i> </button>
+                    <span>{{ food.like_user.count }}</span>
+                          </form>
+                      </div>
+
+
+
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+ {% endfor %}
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- end food section -->
+
+
 
     <section class="offer_section layout_padding-bottom">
       <div class="offer_container">
@@ -292,80 +325,6 @@
       </div>
     </section>
 
-    <!-- end offer section -->
-
-    <!-- food section -->
-
-    <section class="food_section layout_padding-bottom">
-      <div class="container">
-        <div class="heading_container heading_center">
-          <h2 id="menu">menu</h2>
-        </div>
-
-
-        <div class="filters-content">
-          <div class="row grid">
-          {% for food in foods %}
-
-
-
-            <div class="col-sm-6 col-lg-4 all">
-
-                   <div class="box">
-                <div>
-                  <div class="img-box">
-                    <img src="{{ food.image.url }}" alt="{{ food.food_name }}" />
-                  </div>
-                  <div class="detail-box">
-                    <h5>{{ food.food_name }}</h5>
-                    <p>
-                        {{ food.about_food }}
-                    </p>
-                    <div class="options">
-                      <h6>$ {{ food.price }}</h6>
-
-                        <form action="{% url 'add_product_to_order'  %}">
-
-                             <button class="shop_btn" type="button" onclick="add_to_order({{ food.pk }})">
-                                 <i class="bi bi-cart3"></i>
-
-                          </button>
-                        </form>
-
-
-                        <div class="like_part">
-                          <form action="{% url 'like' %}" method="post">
-                              {% csrf_token %}
-                     <button onclick="loginFirst({{food.pk}})" type="button" id="like_btn" ><i class="bi bi-heart-fill"></i> </button>
-                    <span>{{ food.like_user.count }}</span>
-                          </form>
-                      </div>
-
-
-
-
-
-
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
-            </div>
- {% endfor %}
-
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- end food section -->
 
     <!-- about section -->
 
@@ -378,15 +337,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="detail-box">
-              <div class="heading_container">
-                <h2> our resturant </h2>
-              </div>
-              <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-
-            </div>
+          
           </div>
         </div>
       </div>
@@ -476,7 +427,7 @@
     <footer class="footer_section">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 footer-col">
+          <div class="col-md-6 footer-col">
             <div class="footer_contact">
               <h4> contact us  </h4>
               <div class="contact_link_box">
@@ -492,34 +443,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 footer-col">
-            <div class="footer_detail">
-              <a href="" class="footer-logo"> Resturant </a>
-              <p>
-                  {{ footer.description }}
-
-
-			  </p>
-              <div class="footer_social">
-                <a href="{{ footer.facebook_link }}">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="{{ footer.x_link }}">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="{{ footer.linkdin_link }}">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="{{ footer.instagram_link }}">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="{{ footer.pinterest_link }}">
-                  <i class="fa fa-pinterest" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 footer-col">
+  
+          <div class="col-md-6 footer-col">
             <h4>working hours</h4>
             <p>every day</p>
             <p>09:00 a.m to 23:59 pm</p>
