@@ -161,8 +161,8 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATIC_URL='/static/'
 
 
+STATIC_ROOT = BASE_DIR / "statics"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 
