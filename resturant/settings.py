@@ -34,10 +34,7 @@ SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-ALLOWED_HOSTS =['https://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/',
-'http://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/',
-'ckz8748-django-booking-system-b2059e81383e.herokuapp.com']
+ALLOWED_HOSTS =['https://django-resturant-dc830834c6f2.herokuapp.com/','http://django-resturant-dc830834c6f2.herokuapp.com/','django-resturant-dc830834c6f2.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
@@ -110,7 +107,7 @@ CLOUDINARY_STORAGE = {
 # }
 
 DATABASES={
-     'default':dj_database_url.parse(os.environ.get("DATABASE_URL",))
+     'default':dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
