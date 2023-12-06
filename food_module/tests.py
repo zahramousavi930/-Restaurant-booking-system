@@ -17,7 +17,7 @@ class test_forms(TestCase):
         self.assertEqual(form.errors['c_text'][0],'This field is required.')
 
     def test_requierd_reservation(self):
-        form = reservation({'name', '', 'phone', '', 'c_text', ''})
+        form = reservation({'name', '', 'phone', '', 'email', ''})
         self.assertFalse(form.is_valid())
         self.assertIn('name', form.errors.keys())
         self.assertIn('phone', form.errors.keys())
