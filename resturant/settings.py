@@ -109,7 +109,7 @@ CLOUDINARY_STORAGE = {
 # }
 
 DATABASES={
-     'default':dj_database_url.parse(os.environ.get("DATABASE_URLL"))
+     'default':dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
