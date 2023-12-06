@@ -15,7 +15,8 @@ bootstrap icon
 
 Restaurant site is use for reserve and buy online food for all user you can book a table any time and any day that you want.
 
-![1](https://github.com/zahramousavi930/-Restaurant-booking-system/assets/102755356/59e81f82-622a-4ebc-847a-39b23b07dcfb)
+
+![Capture](https://github.com/zahramousavi930/-Restaurant-booking-system/assets/102755356/df7c12ae-f3ce-4694-a687-de68773d4669)
 
 
 Demo like:  https://django-resturant-dc830834c6f2.herokuapp.com/
@@ -93,4 +94,5 @@ test all part of views and form by inner framework of django test
 user must login first then use all feature of a site
 
 
-![Capture](https://github.com/zahramousavi930/-Restaurant-booking-system/assets/102755356/e7f2c7c9-5456-405b-a0ee-a59a7556eaa1)
+![3](https://github.com/zahramousavi930/-Restaurant-booking-system/assets/102755356/ee3c095d-fc78-49fa-ad1b-995c85c0e278)
+
