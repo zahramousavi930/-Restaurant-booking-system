@@ -411,7 +411,7 @@ a:focus {
   margin-top: 45px;
   border-radius: 5px;
   padding: 20px 15px;
-  background-color: #eb5e28;
+  background-color: #222831;
   color: #ffffff;
 }
 
@@ -452,7 +452,7 @@ a:focus {
 .offer_section .box .detail-box a {
   display: inline-block;
   padding: 10px 30px;
-  background-color: #252422;
+  background-color: #ffbe33;
   color: #ffffff;
   border-radius: 45px;
   -webkit-transition: all 0.3s;
@@ -471,10 +471,10 @@ a:focus {
   fill: #ffffff;
 }
 
-.offer_section .box:hover .img-box img {
+/* .offer_section .box:hover .img-box img {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-}
+} */
 
 .food_section .filters_menu {
   padding: 0;
@@ -509,11 +509,11 @@ a:focus {
   color: #ffffff;
   border-radius: 15px;
   overflow: hidden;
-  background: linear-gradient(to bottom, #f1f2f3 25px, #324a5f 25px);
+  background: linear-gradient(to bottom, #f1f2f3 25px, #8d99ae 25px);
 }
 
 .food_section .box .img-box {
-  background: #ff6700;
+  background: #d90429;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -583,10 +583,10 @@ a:focus {
   fill: #ffffff;
 }
 
-.food_section .box:hover .img-box img {
+/* .food_section .box:hover .img-box img {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-}
+} */
 
 .food_section .btn-box {
   display: -webkit-box;
