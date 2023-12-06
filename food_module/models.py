@@ -69,11 +69,11 @@ class reservation(models.Model):
 
 
 class Comments(models.Model):
-    name =models.CharField(max_length=200)
+    name =models.CharField(max_length=300)
     email =models.EmailField(max_length=200)
     text_area =models.TextField(max_length=800)
     is_aactive=models.BooleanField(default=False)
 
 
     def __str__(self):
-        return self.email
+        return self.name
