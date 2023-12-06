@@ -32,10 +32,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS =['https://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/','http://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/','ckz8748-django-booking-system-b2059e81383e.herokuapp.com']
+ALLOWED_HOSTS =['https://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/',
+'http://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/',
+'ckz8748-django-booking-system-b2059e81383e.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
