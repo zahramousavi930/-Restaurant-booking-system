@@ -38,19 +38,21 @@ ALLOWED_HOSTS =['https://django-resturant-dc830834c6f2.herokuapp.com/','http://d
 # Application definition
 
 INSTALLED_APPS = [
-    "whitenoise.runserver_nostatic",
+   
     'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+ 
     # 'django.contrib.staticfiles',
     'food_module',
     'account_module',
 
     'widget_tweaks',
     'cloudinary',
+    "whitenoise",
     
 
 ]
@@ -114,7 +116,7 @@ DATABASES={
 AUTH_USER_MODEL = 'food_module.User'
 
 
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 
 # Password validation
@@ -160,8 +162,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_URL='/static/'
 
-
-STATIC_ROOT = BASE_DIR / "statics"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
