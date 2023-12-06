@@ -38,7 +38,7 @@ ALLOWED_HOSTS =['https://django-resturant-dc830834c6f2.herokuapp.com/','http://d
 # Application definition
 
 INSTALLED_APPS = [
-     "whitenoise.runserver_nostatic",
+    "whitenoise.runserver_nostatic",
     'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -160,7 +160,8 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_URL='/static/'
 
-STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage' 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
