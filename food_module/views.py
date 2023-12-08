@@ -15,7 +15,7 @@ class Home_page(TemplateView):
         context=super(Home_page, self).get_context_data()
         context['foods']=models.Food_menu.objects.filter(is_active=True)
         context['main_comments']=models.Comments.objects.filter(is_aactive=True)
-        context['footer']=models.Footer_data.objects.all()
+        context['footer']=models.Footer_data.objects.get()
         context['reserv']=models.reservation.objects.all()
         context['comment'] = comment_form()
 
@@ -28,7 +28,7 @@ class Book_table(TemplateView):
 
     def get_context_data(self, **kwargs):
         context=super(Book_table, self).get_context_data()
-        context['footer'] = models.Footer_data.objects.all()
+        context['footer'] = models.Footer_data.objects.get()
         context['reserv']=Reservation()
         return context
 
@@ -133,7 +133,7 @@ class about_us(TemplateView):
 
     def get_context_data(self, **kwargs):
         context =super(about_us, self).get_context_data()
-        context['footer']=models.Footer_data.objects.all()
+        context['footer']=models.Footer_data.objects.get()
 
         return context
 

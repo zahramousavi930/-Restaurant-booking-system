@@ -158,7 +158,7 @@
   <footer class="footer_section">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 footer-col">
+        <div class="col-md-4 footer-col">
           <div class="footer_contact">
             <h4> contact us  </h4>
             <div class="contact_link_box">
@@ -174,8 +174,34 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4 footer-col">
+          <div class="footer_detail">
+            <a href="" class="footer-logo"> Resturant </a>
+            <p>
+                {{ footer.description }}
 
-        <div class="col-md-6 footer-col">
+
+      </p>
+            <div class="footer_social">
+              <a href="{{ footer.facebook_link }}">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="{{ footer.x_link }}">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="{{ footer.linkdin_link }}">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="{{ footer.instagram_link }}">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="{{ footer.pinterest_link }}">
+                <i class="fa fa-pinterest" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
           <h4>working hours</h4>
           <p>every day</p>
           <p>09:00 a.m to 23:59 pm</p>
@@ -189,6 +215,7 @@
       </div>
     </div>
   </footer>
+
 
   <!-- footer section -->
 
