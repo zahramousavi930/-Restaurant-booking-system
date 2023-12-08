@@ -20,6 +20,7 @@ Restaurant site is use for reserve and buy online food for all user you can book
 
 
 
+
 Demo like:  https://django-resturant-dc830834c6f2.herokuapp.com/
 
 Features
