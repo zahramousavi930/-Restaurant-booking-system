@@ -134,33 +134,6 @@ I deployed this website using GitPod, Heroku, and following the below steps:
 3. Use GitPod to deploy and commit changes to GitHub.
 4. Add Procfile and Gunicorn for running code on Heroku.
 
-## Testing
-
-All parts of views and forms were tested using the inner framework of Django test. Users must log in first to use all features of the site.
-
-### HTML
-
-- HTML validation was carried out using the [Nu HTML Checker tool](https://validator.w3.org/) by W3C.
-- Links are provided where the page could be tested using the URL.
-
-#
-
-- #### Home Page Validation
-
-  - [Link](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-restaurant-booking-site.com%2F)
-
-  ![Home Page Validation Image](static/images/htmltest.PNG)
-
-...
-
-### Lighthouse
-
-- Lighthouse, using Chrome Dev Tools, was used to ensure best practices were followed on the site.
-
-- The test results can be found in full [here](#) (link to your generated Lighthouse report).
-
-  ![Lighthouse Test Image](static/images/lighthouse.PNG)
-
 ## Contact Us
 ![Contact](static/images/contact.PNG)
 
@@ -191,6 +164,34 @@ For any inquiries or assistance, please feel free to contact us at [info@restaur
 
 ![Notifaction](static/images/not.PNG)
 **Notification Section**: This section provides users with updates and notifications related to their orders. It enhances user communication and keeps them informed about the status of their reservations or food orders.
+
+## Testing
+
+All parts of views and forms were tested using the inner framework of Django test. Users must log in first to use all features of the site.
+
+### HTML
+
+- HTML validation was carried out using the [Nu HTML Checker tool](https://validator.w3.org/) by W3C.
+- Links are provided where the page could be tested using the URL.
+
+#
+
+- #### Home Page Validation
+
+  - [Link](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-restaurant-booking-site.com%2F)
+
+  ![Home Page Validation Image](static/images/htmltest.PNG)
+
+...
+
+### Lighthouse
+
+- Lighthouse, using Chrome Dev Tools, was used to ensure best practices were followed on the site.
+
+- The test results can be found in full [here](#) (link to your generated Lighthouse report).
+
+  ![Lighthouse Test Image](static/images/lighthouse.PNG)
+  
 
 ## Contributing
 
