@@ -143,7 +143,7 @@ All parts of views and forms were tested using the inner framework of Django tes
 ![Basket](static/images/basket.PNG)
 **Basket Page**: Users can view and manage the items in their shopping cart.This page displays the items in the user's shopping cart. Users can view the selected items and manage their quantities before proceeding to checkout. It provides a convenient overview of the chosen items for the user.
 
-![About](static/images/about-img.png)
+![About]
 **About Us Page**: Learn more about our team and our commitment to delivering a delightful dining experience.This section provides users with information about the team behind the Restaurant Booking System. It offers insights into the company's values, mission, and dedication to delivering a delightful dining experience.
 
 ![Comment](static/images/comment.PNG)
