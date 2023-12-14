@@ -138,6 +138,11 @@ I deployed this website using GitPod, Heroku, and following the below steps:
 
 All parts of views and forms were tested using the inner framework of Django test. Users must log in first to use all features of the site.
 
+## Contact Us
+![Contact](static/images/contact.PNG)
+
+For any inquiries or assistance, please feel free to contact us at [info@restaurantbookingsystem.com](mailto:info@restaurantbookingsystem.com).
+
 ## Screenshots
 
 ![Basket](static/images/basket.PNG)
