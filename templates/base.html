@@ -16,16 +16,22 @@
 {% endblock %}
 
 </head>
-<body>
 
+
+<body>
+{% include 'header.html' %}
 {% block content %}
 
 {% endblock %}
 
 
 
+{% include 'footer.html' %}
+
 {% block footer %}
 {% include 'footer_refrences.html' %}
 {% endblock %}
+
+
 </body>
 </html>
