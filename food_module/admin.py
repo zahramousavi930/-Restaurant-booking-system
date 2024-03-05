@@ -13,8 +13,8 @@ class reserv_display(admin.ModelAdmin):
 
 
 class comments_display(admin.ModelAdmin):
-    list_display = ('name','email','is_aactive')
-    list_editable = ('is_aactive',)
+    list_display = ('name','email','is_active_comment')
+    list_editable = ('is_active_comment',)
 
 
 
