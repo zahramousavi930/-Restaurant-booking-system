@@ -188,7 +188,7 @@ function modify_order(pk){
 
 
     }
-    console.log(pk)
+   
     fetch('remove',{
  method: 'post',
         credentials: 'include',
@@ -202,7 +202,7 @@ function modify_order(pk){
     }).then(res=>{
         res.json().then(response=>{
             if(response.status === 'ok'){
-                window.location.href='add-to-shopping_cart'
+                window.location.href='shopping_cart'
             }
         })
     })
@@ -317,7 +317,7 @@ function like_food(pk){
 
 
 function add_to_order(pk){
-    console.log(pk)
+   
    function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {

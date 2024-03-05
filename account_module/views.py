@@ -258,7 +258,7 @@ def add_product_to_order(request):
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
     pk = body['pk']
-    print(pk)
+
 
 
     if request.user.is_authenticated:

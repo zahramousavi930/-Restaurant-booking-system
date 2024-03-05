@@ -71,7 +71,7 @@
 
                         {% if user.is_authenticated %}
                             <a class="cart_link text-light " href="{% url 'shopping_cart' %}">
-                                <i class="bi bi-cart-fill  {% if request.path == '/user/add-to-shopping_cart' %}
+                                <i class="bi bi-cart-fill  {% if request.path == '/user/shopping_cart' %}
                         	text-warning
                         {% endif %} "></i>
                             </a>

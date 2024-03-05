@@ -82,7 +82,7 @@ def comments(request):
         new_comments.save()
         return JsonResponse({'status': 'ok', 'message': 'after checking your comments it will be shown'})
     except Exception as e:
-        print(e)
+        
         return JsonResponse({'status': 'error', 'message': 'there is a problem to save comments'})
 
 
