@@ -23,26 +23,21 @@ class RegisterForm(forms.Form):
     password=forms.CharField(
         label='password',
         widget=forms.PasswordInput(attrs={'placeholder':'password','class':'form-control validate','id':'r_password'}),
-        validators=[
-            validators.MaxValueValidator(100),
-        ]
+
     )
 
 
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(
-        label='email',
-        widget=forms.EmailInput(attrs={'placeholder':'enter email','class':'form-control validate' ,'id':'l_email'}),
-        validators=[
-            validators.MaxLengthValidator(100),
-            validators.EmailValidator
-        ]
+    email_or_username= forms.CharField(
+        label='username or email',
+        widget=forms.TextInput(attrs={'placeholder':'username / email','class':'form-control validate my-1' ,'id':'email_username'}),
+
     )
     password = forms.CharField(
         label=' password',
-        widget=forms.PasswordInput(attrs={'placeholder':'enter password','class':'form-control validate', 'id':'l_password' }),
+        widget=forms.PasswordInput(attrs={'placeholder':'enter password','class':'form-control validate my-1', 'id':'l_password' }),
         validators=[
             validators.MaxLengthValidator(100)
         ]

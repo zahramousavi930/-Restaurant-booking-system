@@ -1,7 +1,11 @@
 from django.db import models
 from food_module.models import Food_menu ,User
 # Create your models here.
+
+
 class Order(models.Model):
+
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_paid = models.BooleanField()
     payment_date = models.DateField(null=True, blank=True)
