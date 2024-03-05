@@ -1,22 +1,14 @@
-<!doctype html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeLg5rVQxS9rybm_OULK_DwsGX4YNynby-lrXUyLby&s">
-    <title>404</title>
-    <style>
+
+{% block title %}
+	404 page
+{% endblock %}
 
 
+{% block content %}
 
-    </style>
-    {% include 'header_refrences.html' %}
 
-</head>
-<body>
 <div class="container my-4 not_found_div" >
     <p>404 error</p>
 
@@ -30,8 +22,6 @@
 <br>
 <a href="{% url 'home_page' %}"> back to Home</a>
 </div>
+{% endblock %}
 
 
-
-</body>
-</html>
