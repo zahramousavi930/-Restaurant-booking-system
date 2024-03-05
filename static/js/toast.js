@@ -1,72 +1,104 @@
-function loginFirst(pk){
+
+
+function decrease_count(food_pk) {
     function getCookie(name) {
-         let cookieValue = null;
-         if (document.cookie && document.cookie !== '') {
-             const cookies = document.cookie.split(';');
-             for (let i = 0; i < cookies.length; i++) {
-                 const cookie = cookies[i].trim();
-                 if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                     break;
-                 }
-             }
-         }
-         return cookieValue;
-     }
- 
-     const csrftoken = getCookie('csrftoken');
-     let headers = {
-         'Accept': 'application/json',
-         'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
-         'X-CSRFToken': csrftoken,
- 
- 
-     }
- 
-     console.log(pk)
- 
-     fetch('/like',{
-          method: 'post',
-         credentials: 'include',
-         headers ,
-         body : JSON.stringify({
-            pk
- 
- 
- 
-         })
-     }).then(res=>{
-         res.json().then(response=>{
-             if(response.status ==='no'){
-                       const Toast = Swal.mixin({
-                     toast: true,
-                     position: 'top-end',
-                     showConfirmButton: false,
-                     timer: 5000,
-                     timerProgressBar: true,
-                     didOpen: (toast) => {
-                         toast.addEventListener('mouseenter', Swal.stopTimer)
-                         toast.addEventListener('mouseleave', Swal.resumeTimer)
-                     }
-                 })
- 
-                         Toast.fire({
-                     icon: 'error',
-                     title: response.message
-                 })
-                   }
- 
- 
- 
-         })
-     })
- 
- 
- }
- 
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+
+
+    }
+
+    // let count_element = document.getElementById('count_' + food_pk).value
+    fetch('/user/descrease_count',{
+              method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+food_pk
+
+
+        })
+    }).then(response=>{
+         response.json().then(res=>{
+            if(res.status ==='ok'){
+                window.location.href = document.URL
+            }
+        })
+
+    })
+
+  }
+
+
+
+ function increase_count(food_pk) {
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+
+
+    }
+
+    // let count_element = document.getElementById('count_' + food_pk).value
+    fetch('/user/increase_count',{
+              method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+food_pk
+
+
+        })
+    }).then(response=>{
+        response.json().then(res=>{
+            if(res.status ==='ok'){
+                window.location.href = document.URL
+            }
+        })
+
+    })
+
+  }
+
+
+
 
 function remove_reserv(pk) {
-    console.log(pk)
+
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -106,6 +138,25 @@ function remove_reserv(pk) {
             if(response.status ==='ok'){
                 window.location.href ='dashboard'
             }
+            if(res.status === 'failed'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
+
         })
     })
 }
@@ -161,11 +212,112 @@ function modify_order(pk){
 
 
 
+function like_food(pk){
+       function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 
+    const csrftoken = getCookie('csrftoken');
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,}
+
+
+
+     fetch('/like',
+        {
+          method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+           pk
+        })
+    }).then(response=>{
+        response.json().then(res=>{
+            if(res.status === 'disliked'){
+                    window.location.href='/'
+            }
+
+            if(res.status === 'liked'){
+                  window.location.href='/'
+            }
+            if(res.status === 'no'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
+            if(res.status === 'error1'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
+            if(res.status === 'error2'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
+        })
+
+     })
+
+
+}
 
 
 
 function add_to_order(pk){
+    console.log(pk)
    function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -190,7 +342,9 @@ function add_to_order(pk){
 
     }
 
-    fetch('/user/add-to-order',
+
+
+    fetch('user/add-to-order',
         {
           method: 'post',
         credentials: 'include',
@@ -298,8 +452,10 @@ function bookingg() {
     const email=document.getElementById('id_email').value
 
     const date=document.getElementById('m_date').value
-    const how_many=document.getElementById('number_i').value
+    const how_many=document.getElementById('id_number_of_guests').value
     const time=document.getElementById('m_time').value
+
+
 
 
 
@@ -333,6 +489,9 @@ function bookingg() {
                     icon: 'success',
                     title: res.message
                 })
+                setTimeout(function() {
+    window.location.href = 'user/dashboard';
+}, 5000);
             }
 
             if(res.status === 'no'){
@@ -439,6 +598,24 @@ function comments_data() {
                     title: res.message
                 })
             }
+            if(res.status === 'error'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
 
         })
     })
@@ -515,3 +692,14 @@ $(".client_owl-carousel").owlCarousel({
         }
     }
 });
+
+
+
+
+
+
+function cancel_change(){
+    window.location.href = '/user/dashboard'
+}
+
+

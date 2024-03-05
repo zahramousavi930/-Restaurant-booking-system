@@ -132,7 +132,7 @@ function login_dataa() {
     }
 
 
-    const user_email = document.getElementById('l_email').value
+    const user_email = document.getElementById('email_username').value
     const user_pass = document.getElementById('l_password').value
 
     fetch('/user/login',
@@ -188,12 +188,30 @@ function login_dataa() {
                     title: response.message
                 })
             }
+            if(response.status === 'data_not_correct'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: response.message
+                })
+            }
+
+            if(response.status === 'ok'){
+                   window.location.href ='/'
+            }
 
 
-             if(response.status === 'ok'){
-                 window.location.href = '/'
-
-             }
 
 
         })
@@ -232,7 +250,7 @@ function forget_pass() {
       const user_email = document.getElementById('id_email').value
 
 
-    fetch('/user/forget_pass',
+    fetch('/user/forget_password',
         {
         method: 'post',
         credentials: 'include',

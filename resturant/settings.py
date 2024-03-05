@@ -92,11 +92,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'resturant.wsgi.application'
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dggry4oz1',
-    'API_KEY': '619785319395311',
-    'API_SECRET': 'tCzuwcSoxBJ8zP1xoSt1INUakto'
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dggry4oz1',
+#     'API_KEY': '619785319395311',
+#     'API_SECRET': 'tCzuwcSoxBJ8zP1xoSt1INUakto'
+# }
 
 
 # Database
