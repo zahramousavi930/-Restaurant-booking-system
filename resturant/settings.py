@@ -32,9 +32,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS =['https://django-resturant-dc830834c6f2.herokuapp.com/','http://django-resturant-dc830834c6f2.herokuapp.com/','django-resturant-dc830834c6f2.herokuapp.com']
+ALLOWED_HOSTS =['8000-zahramousav-restaurantb-jmhffjysote.ws-eu108.gitpod.io']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -101,16 +102,16 @@ CLOUDINARY_STORAGE = {
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-DATABASES={
-     'default':dj_database_url.parse(os.environ.get("DATABASE_URL"))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES={
+#      'default':dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# }
 
 
 AUTH_USER_MODEL = 'food_module.User'
@@ -191,4 +192,4 @@ EMAIL_PORT = 587
 
 
 
-django_heroku.settings(locals(),staticfiles=False)
+# django_heroku.settings(locals(),staticfiles=False)
