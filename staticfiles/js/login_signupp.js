@@ -84,7 +84,7 @@ function register_data(){
 
                   }
 
-                  if(res.status === 'ok'){
+                  if(res.status ==='ok'){
                       const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
