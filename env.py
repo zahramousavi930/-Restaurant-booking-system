@@ -1,3 +1,3 @@
 import os
 
-os.environ.setdefault('DATABASE_URL','postgres://ctcajevd:Q6EMzHqQeICHLxvcOpJDxMN1SZPasDXm@flora.db.elephantsql.com/ctcajevd')
+os.environ.setdefault('DATABASE_URL','postgres://rdpjtzkq:aSYZtzeHaGgCt9D2fxeZ7YJx3dkz8zH4@flora.db.elephantsql.com/rdpjtzkq')
