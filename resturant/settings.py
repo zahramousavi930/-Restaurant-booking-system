@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS =['resturant-3252-19e8d5d3a135.herokuapp.com']
 
@@ -92,11 +92,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'resturant.wsgi.application'
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'dggry4oz1',
-#     'API_KEY': '619785319395311',
-#     'API_SECRET': 'tCzuwcSoxBJ8zP1xoSt1INUakto'
-# }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dggry4oz1',
+    'API_KEY': '619785319395311',
+    'API_SECRET': 'tCzuwcSoxBJ8zP1xoSt1INUakto'
+}
 
 
 # Database
