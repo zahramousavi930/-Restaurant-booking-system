@@ -52,7 +52,7 @@ function register_data(){
 
 
 
-    fetch('/user/', {
+    fetch('/user', {
         method: 'post',
         credentials: 'include',
         headers ,

@@ -188,7 +188,7 @@ class edit_dsahboard(UpdateView):
     template_name = 'edit_user_dashboard.html'
     model = reservation
     fields = ['name', 'phone', 'email', 'number_of_guests', 'date', 'timee']
-    success_url = '/user/dashboard/'
+    success_url = '/dashboard/'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
