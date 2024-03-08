@@ -93,11 +93,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'resturant.wsgi.application'
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'dggry4oz1',
-#     'API_KEY': '619785319395311',
-#     'API_SECRET': 'tCzuwcSoxBJ8zP1xoSt1INUakto'
-# }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dggry4oz1',
+    'API_KEY': '619785319395311',
+    'API_SECRET': 'tCzuwcSoxBJ8zP1xoSt1INUakto'
+}
 
 
 # Database
@@ -118,7 +118,7 @@ DATABASES={
 AUTH_USER_MODEL = 'food_module.User'
 
 
-# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 
 # Password validation
@@ -159,7 +159,7 @@ USE_TZ = True
 
 MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/medias/'
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 STATIC_URL='/static/'
