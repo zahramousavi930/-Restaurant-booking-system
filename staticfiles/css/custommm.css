@@ -31,6 +31,7 @@
 color: #fff;
   background-color: #218838;
   border-color: #1e7e34;
+
 }
 
 #cancel{
@@ -38,6 +39,7 @@ color: #fff;
   background-color: #c82333;
   border-color: #bd2130;
 }
+
 .shop_btn{
 outline: none;
   border: none;
@@ -47,3 +49,4 @@ outline: none;
   font-size: 25px;
   width: 40px;
 }
+

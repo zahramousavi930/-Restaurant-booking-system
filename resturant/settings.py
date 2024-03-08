@@ -40,14 +40,14 @@ ALLOWED_HOSTS =['resturant-3252-19e8d5d3a135.herokuapp.com']
 
 INSTALLED_APPS = [
    
-    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
- 
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+ 
     'food_module',
     'account_module',
 
@@ -92,11 +92,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'resturant.wsgi.application'
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dggry4oz1',
-    'API_KEY': '619785319395311',
-    'API_SECRET': 'tCzuwcSoxBJ8zP1xoSt1INUakto'
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dggry4oz1',
+#     'API_KEY': '619785319395311',
+#     'API_SECRET': 'tCzuwcSoxBJ8zP1xoSt1INUakto'
+# }
 
 
 # Database
@@ -117,7 +117,6 @@ DATABASES={
 AUTH_USER_MODEL = 'food_module.User'
 
 
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 
 # Password validation
@@ -159,13 +158,21 @@ USE_TZ = True
 MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/medias/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+import os
+
+STATIC_URL = '/static/'
 
 
-STATIC_URL='/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage' 
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 
@@ -192,4 +199,3 @@ EMAIL_PORT = 587
 
 
 
-# django_heroku.settings(locals(),staticfiles=False)
