@@ -32,9 +32,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS =['8000-zahramousav-restaurantb-jmhffjysote.ws-eu108.gitpod.io']
+ALLOWED_HOSTS =['resturant-bookingsystem-d1932e1df652.herokuapp.com']
 
 # Application definition
 
@@ -164,7 +164,7 @@ MEDIA_URL = '/medias/'
 STATIC_URL='/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-# STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage' 
+STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage' 
 
 
 
