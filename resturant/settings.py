@@ -37,7 +37,7 @@ DEBUG = True
 ALLOWED_HOSTS =['booking-2343-resturant-fbcb6c4f4109.herokuapp.com']
 
 # Application definition
-
+ APPEND_SLASH=False
 INSTALLED_APPS = [
    
     'django.contrib.admin',
