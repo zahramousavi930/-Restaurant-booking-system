@@ -21,7 +21,7 @@ login/signup
 
 
 {#            login form#}
-        <form class="col s12 login_form" method="post" action="{% url 'login'%}/">
+        <form class="col s12 login_form" method="post" action="{% url 'login'%}">
             {% csrf_token %}
             <div class="row center-align">
                 <h4 class="white-text">login</h4>
@@ -58,7 +58,7 @@ login/signup
         </form>
 
 {#register form#}
-        <form class="col s12" method="post" action="{% url 'login_register' %}/" >
+        <form class="col s12" method="post" action="{% url 'login_register' %}" >
 
             {% csrf_token %}
             <div class="row center-align">
