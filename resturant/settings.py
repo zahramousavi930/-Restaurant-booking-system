@@ -34,10 +34,9 @@ SECRET_KEY = 'django-insecure-c@kp4rfp236b4+9_7+2jsaw+b%-0$d8f53kz#1fe*nh)_r#+(+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =['booking-2343-resturant-fbcb6c4f4109.herokuapp.com']
+ALLOWED_HOSTS =['booking-2343-resturant-fbcb6c4f4109.herokuapp.com','8000-zahramousav-restaurantb-90irb5zo1bk.ws-eu108.gitpod.io']
 
 # Application definition
- APPEND_SLASH=False
 INSTALLED_APPS = [
    
     'django.contrib.admin',
