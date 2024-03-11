@@ -1,1 +1,306 @@
-let $id=e=>document.getElementById(e);var[login,register,form]=["login","register","form"].map((e=>$id(e)));function register_data(){let e={Accept:"application/json","X-Requested-With":"XMLHttpRequest","X-CSRFToken":function(e){let t=null;if(document.cookie&&""!==document.cookie){const s=document.cookie.split(";");for(let i=0;i<s.length;i++){const o=s[i].trim();if(o.substring(0,e.length+1)===e+"="){t=decodeURIComponent(o.substring(e.length+1));break}}}return t}("csrftoken")};const t=document.getElementById("r_email").value,s=document.getElementById("r_password").value,i=document.getElementById("r_username").value;fetch("/user/signup",{method:"post",credentials:"include",headers:e,body:JSON.stringify({user_email:t,user_pass:s,user_username:i})}).then((e=>{e.json().then((e=>{if("exists"===e.status){Swal.mixin({toast:!0,position:"top-end",showConfirmButton:!1,timer:5e3,timerProgressBar:!0,didOpen:e=>{e.addEventListener("mouseenter",Swal.stopTimer),e.addEventListener("mouseleave",Swal.resumeTimer)}}).fire({icon:"error",title:e.message})}if("ok"===e.status){Swal.mixin({toast:!0,position:"top-end",showConfirmButton:!1,timer:5e3,timerProgressBar:!0,didOpen:e=>{e.addEventListener("mouseenter",Swal.stopTimer),e.addEventListener("mouseleave",Swal.resumeTimer)}}).fire({icon:"success",title:e.message})}}))}))}function login_dataa(){let e={Accept:"application/json","X-Requested-With":"XMLHttpRequest","X-CSRFToken":function(e){let t=null;if(document.cookie&&""!==document.cookie){const s=document.cookie.split(";");for(let i=0;i<s.length;i++){const o=s[i].trim();if(o.substring(0,e.length+1)===e+"="){t=decodeURIComponent(o.substring(e.length+1));break}}}return t}("csrftoken")};const t=document.getElementById("email_username").value,s=document.getElementById("l_password").value;fetch("/user/login",{method:"post",credentials:"include",headers:e,body:JSON.stringify({user_email:t,user_pass:s}),redirect:"follow"}).then((e=>{e.json().then((e=>{if("no_active"===e.status){Swal.mixin({toast:!0,position:"top-end",showConfirmButton:!1,timer:5e3,timerProgressBar:!0,didOpen:e=>{e.addEventListener("mouseenter",Swal.stopTimer),e.addEventListener("mouseleave",Swal.resumeTimer)}}).fire({icon:"error",title:e.message})}if("no pass"===e.status){Swal.mixin({toast:!0,position:"top-end",showConfirmButton:!1,timer:5e3,timerProgressBar:!0,didOpen:e=>{e.addEventListener("mouseenter",Swal.stopTimer),e.addEventListener("mouseleave",Swal.resumeTimer)}}).fire({icon:"error",title:e.message})}if("data_not_correct"===e.status){Swal.mixin({toast:!0,position:"top-end",showConfirmButton:!1,timer:5e3,timerProgressBar:!0,didOpen:e=>{e.addEventListener("mouseenter",Swal.stopTimer),e.addEventListener("mouseleave",Swal.resumeTimer)}}).fire({icon:"error",title:e.message})}"ok"===e.status&&(window.location.href="/")}))}))}function forget_pass(){let e={Accept:"application/json","X-Requested-With":"XMLHttpRequest","X-CSRFToken":function(e){let t=null;if(document.cookie&&""!==document.cookie){const s=document.cookie.split(";");for(let i=0;i<s.length;i++){const o=s[i].trim();if(o.substring(0,e.length+1)===e+"="){t=decodeURIComponent(o.substring(e.length+1));break}}}return t}("csrftoken")};const t=document.getElementById("id_email").value;fetch("/user/forget_password",{method:"post",credentials:"include",headers:e,body:JSON.stringify({user_email:t}),redirect:"follow"}).then((e=>{e.json().then((e=>{if("ok"===e.status){Swal.mixin({toast:!0,position:"top-end",showConfirmButton:!1,timer:5e3,timerProgressBar:!0,didOpen:e=>{e.addEventListener("mouseenter",Swal.stopTimer),e.addEventListener("mouseleave",Swal.resumeTimer)}}).fire({icon:"success",title:e.message})}if("no"===e.status){Swal.mixin({toast:!0,position:"top-end",showConfirmButton:!1,timer:5e3,timerProgressBar:!0,didOpen:e=>{e.addEventListener("mouseenter",Swal.stopTimer),e.addEventListener("mouseleave",Swal.resumeTimer)}}).fire({icon:"error",title:e.message})}}))}))}[login,register].map((e=>{e.onclick=function(){[login,register].map((e=>{e.classList.remove("active")})),this.classList.add("active"),"register"===this.getAttribute("id")?form.classList.add("active"):form.classList.remove("active")}}));
+let $id = (id) => document.getElementById(id);
+var [login, register, form] = ['login', 'register', 'form'].map(id => $id(id));
+
+[login, register].map(element => {
+    element.onclick = function () {
+        [login, register].map($ele => {
+            $ele.classList.remove("active");
+        });
+        this.classList.add("active");
+        this.getAttribute("id") === "register"?  form.classList.add("active") : form.classList.remove("active");
+    }
+});
+
+
+
+
+
+
+
+
+
+//fetch part
+
+function register_data(){
+    function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+    const csrftoken = getCookie('csrftoken');
+
+    let   headers={
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+}
+
+
+    const user_email =document.getElementById('r_email').value
+    const user_pass =document.getElementById('r_password').value
+    const user_username =document.getElementById('r_username').value
+
+
+
+
+    fetch('/user/signup', {
+        method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+            user_email,user_pass,user_username
+        })
+      }).then(response=>{
+          response.json()
+              .then(res=>{
+
+                  if(res.status === 'exists'){
+                      const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                        Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+
+
+                  }
+
+                  if(res.status ==='ok'){
+                      const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                        Toast.fire({
+                    icon: 'success',
+                    title: res.message
+                })
+                  }
+              }) })
+}
+
+
+
+function login_dataa() {
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+    }
+
+
+    const user_email = document.getElementById('email_username').value
+    const user_pass = document.getElementById('l_password').value
+
+    fetch('/user/login',
+        {
+        method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+           user_email,
+
+            user_pass
+        }),
+         redirect: 'follow'
+        }
+
+        ).then(res=>{
+        res.json().then(response=>{
+            if(response.status === 'no_active'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: response.message
+                })
+            }
+
+
+            if(response.status === 'no pass'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: response.message
+                })
+            }
+            if(response.status === 'data_not_correct'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: response.message
+                })
+            }
+
+            if(response.status === 'ok'){
+                   window.location.href ='/'
+            }
+
+
+
+
+        })
+    })
+
+
+}
+
+
+
+
+function forget_pass() {
+       function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+
+    let headers = {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        'X-CSRFToken': csrftoken,
+    }
+
+      const user_email = document.getElementById('id_email').value
+
+
+    fetch('/user/forget_password',
+        {
+        method: 'post',
+        credentials: 'include',
+        headers ,
+        body : JSON.stringify({
+           user_email
+        }),
+         redirect: 'follow'
+        }
+
+        ).then(response=>{
+        response.json().then(res=>{
+             if(res.status === 'ok'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'success',
+                    title: res.message
+                })
+            }
+
+              if(res.status === 'no'){
+                   const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                    Toast.fire({
+                    icon: 'error',
+                    title: res.message
+                })
+            }
+        })
+    })
+
+}
