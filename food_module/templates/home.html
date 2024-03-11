@@ -1,1 +1,181 @@
-{% extends 'base.html' %}{% load static %}{% block title %} Booking Table{% endblock %}{% block content %}<main><section class="food_section layout_padding-bottom"><div class="container"><div class="heading_container heading_center"><h2 id="menu">menu</h2></div><div class="filters-content"><div class="row grid">{% for food in foods %} <div class="col-sm-6 col-lg-4 all"><div class="box"><div><div class="img-box"><img src="{{ food.image.url}}" alt="{{ food.food_name}}" /></div><div class="detail-box"><h5>{{ food.food_name}}</h5><p>{{ food.about_food}}</p><div class="options"><h6>${{ food.price}}</h6><form action="{% url 'add_product_to_order' %}"><button class="shop_btn" type="button" onclick="add_to_order({{ food.pk}})" ><i class="bi bi-cart3"></i></button></form><div class="like_part d-flex"><form action="{% url 'like' %}" method="post">{% csrf_token %} <button onclick="like_food({{ food.pk}})" type="button" class="like_btnn" ><i class="bi bi-heart-fill"></i></button></form><span>{{ food.like_user.count}}</span></div></div></div></div></div></div>{% endfor %} </div></div></div></section><section class="about_section layout_padding"><div class="container"><div class="row"><div class="col-md-6"><div class="img-box">{# <img src="images/about-img.png" alt="about" />#} </div></div><div class="col-md-6"></div></div></div></section><section class="client_section layout_padding-bottom"><div class="container"><div class="heading_container heading_center psudo_white_primary mb_45"><h2>customers comment</h2></div><div class="carousel-wrap row"><div class="owl-carousel client_owl-carousel">{% for main_comment in main_comments %} <div class="item"><div class="box"><div class="detail-box"><div class="d-flex justify-content-between"><p>{{ main_comment.text_area}}</p><p class="text-secondary">{{ main_comment.date_time}}</p></div><h6>{{ main_comment.name}}</h6></div></div></div>{% endfor %} </div></div></div></section><section class="book_section layout_padding"><div class="container"><div class="heading_container"><h2>leave a comment</h2></div><div class="row"><div class="col-md-6"><div class="form_container"><form action="{% url 'add_comments' %}" method="post">{% csrf_token %} <div>{{ comment.c_name}}</div><div>{{ comment.c_email}}</div><div>{{ comment.c_text}}</div><div class="btn_box"><button onclick="comments_data()" type="button">send</button></div></form></div></div><div class="col-md-6"><div class="map_container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417296.44879922585!2d-81.16948770518411!3d35.203267906593894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541fc4fc381a81%3A0x884650e6bf43d164!2sCharlotte%2C%20NC%2C%20USA!5e0!3m2!1sen!2s!4v1700846670445!5m2!1sen!2s" width="600" height="450" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" ></iframe></div></div></div></div></section><section class="offer_section layout_padding-bottom"><div class="offer_container"><div class="container"><div class="row">{% for food in foods %}{% if food.discount %} <div class="col-md-6"><div class="box"><div class="img-box"><img src="{{ food.image.url}}" alt="{{ food.food_name}}" /></div><div class="detail-box"><h5>{{ food.food_name}}</h5><h6><span>{{ food.discount}}%</span>OFF</h6></div></div></div>{% endif %}{% endfor %} </div></div></div></section></main>{% endblock %}
+{% extends 'base.html' %} 
+{% load static %} 
+
+
+{% block title %} 
+Booking Table
+{% endblock %}
+
+{% block content %}
+
+<!-- food section -->
+<main>
+
+
+<section class="food_section layout_padding-bottom">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2 id="menu">menu</h2>
+    </div>
+
+    <div class="filters-content">
+      <div class="row grid">
+        {% for food in foods %}
+
+        <div class="col-sm-6 col-lg-4 all">
+          <div class="box">
+            <div>
+              <div class="img-box">
+                <img src="{{ food.image.url }}" alt="{{ food.food_name }}" />
+              </div>
+              <div class="detail-box">
+                <h5>{{ food.food_name }}</h5>
+                <p>{{ food.about_food }}</p>
+                <div class="options">
+                  <h6>$ {{ food.price }}</h6>
+
+                  <form action="{% url 'add_product_to_order' %}">
+                    <button
+                    name="add to cart"
+                      class="shop_btn"
+                      type="button"
+                      onclick="add_to_order({{ food.pk }})"
+                    >
+                      <i class="bi bi-cart3"></i>
+                    </button>
+                  </form>
+
+                  <div class="like_part d-flex">
+                    <form action="{% url 'like' %}" method="post">
+                      {% csrf_token %}
+                      <button
+                      name="like food"
+                        onclick="like_food({{ food.pk }})"
+                        type="button"
+                        class="like_btnn"
+                      >
+                        <i class="bi bi-heart-fill"></i>
+                      </button>
+                    </form>
+                    <span>{{ food.like_user.count }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- end food section -->
+
+<!-- about section -->
+
+<section class="about_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="img-box">
+          {# <img src="images/about-img.png" alt="about" />#}
+        </div>
+      </div>
+      <div class="col-md-6"></div>
+    </div>
+  </div>
+</section>
+
+<!-- end about section -->
+
+<section class="client_section layout_padding-bottom">
+  <div class="container">
+    <div class="heading_container heading_center psudo_white_primary mb_45">
+      <h2>customers comment</h2>
+    </div>
+    <div class="carousel-wrap row">
+      <div class="owl-carousel client_owl-carousel">
+        {% for main_comment in main_comments %}
+        <div class="item">
+          <div class="box">
+            <div class="detail-box">
+              <div class="d-flex justify-content-between">
+                <p>{{ main_comment.text_area }}</p>
+                <p class="text-secondary">{{ main_comment.date_time }}</p>
+              </div>
+              <h6>{{ main_comment.name }}</h6>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- comment section -->
+<section class="book_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>leave a comment</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form_container">
+          <form action="{% url 'add_comments' %}" method="post">
+            {% csrf_token %}
+            <div>{{ comment.c_name }}</div>
+
+            <div>{{ comment.c_email }}</div>
+            <div>{{ comment.c_text }}</div>
+
+            <div class="btn_box">
+              <button name="send-comment" onclick="comments_data()" class="btn btn-warning text-dark" type="button">send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="map_container">
+          <iframe 
+          title="google location map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417296.44879922585!2d-81.16948770518411!3d35.203267906593894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541fc4fc381a81%3A0x884650e6bf43d164!2sCharlotte%2C%20NC%2C%20USA!5e0!3m2!1sen!2s!4v1700846670445!5m2!1sen!2s"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end comment section -->
+
+<section class="offer_section layout_padding-bottom">
+  <div class="offer_container">
+    <div class="container">
+      <div class="row">
+        {% for food in foods %} {% if food.discount %}
+
+        <div class="col-md-6">
+          <div class="box">
+            <div class="img-box">
+              <img src="{{ food.image.url }}" alt="{{ food.food_name }}" />
+            </div>
+            <div class="detail-box">
+              <h5>{{ food.food_name }}</h5>
+              <h6><span>{{ food.discount }}%</span> OFF</h6>
+            </div>
+          </div>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+{% endblock %}
