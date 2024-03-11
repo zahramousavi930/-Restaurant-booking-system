@@ -40,6 +40,7 @@ Booking Table
                       class="shop_btn"
                       type="button"
                       onclick="add_to_order({{ food.pk }})"
+                      aria-label="Add to Cart"
                     >
                       <i class="bi bi-cart3"></i>
                     </button>
@@ -53,6 +54,7 @@ Booking Table
                         onclick="like_food({{ food.pk }})"
                         type="button"
                         class="like_btnn"
+                        aria-label='loke food'
                       >
                         <i class="bi bi-heart-fill"></i>
                       </button>
@@ -131,7 +133,7 @@ Booking Table
             <div>{{ comment.c_text }}</div>
 
             <div class="btn_box">
-              <button name="send-comment" onclick="comments_data()" class="btn btn-warning text-dark" type="button">send</button>
+              <button name="send-comment"  aria-label='send commit' onclick="comments_data()" class="btn btn-warning text-dark" type="button">send</button>
             </div>
           </form>
         </div>
