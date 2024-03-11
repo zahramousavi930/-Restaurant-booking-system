@@ -1,5 +1,18 @@
-#like_btn{
-    width: 40px;
+
+
+
+.like_part{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 72px;
+}
+
+
+
+
+.like_part button{
+  width: 40px;
   height: 40px;
   border-radius: 100%;
   background: #ffbe33;
@@ -18,13 +31,6 @@
     color: white;
 }
 
-
-.like_part{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 72px;
-}
 
 
 #set{

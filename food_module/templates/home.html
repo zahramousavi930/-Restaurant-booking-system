@@ -54,7 +54,7 @@
                                                 <form action="{% url 'like' %}" method="post">
                                                     {% csrf_token %}
                                                     <button onclick="like_food({{ food.pk }})" type="button"
-                                                            id="like_btn"><i class="bi bi-heart-fill"></i></button>
+                                                            class="like_btnn"><i class="bi bi-heart-fill"></i></button>
                                                 </form>
                                                 <span>{{ food.like_user.count }}</span>
                                             </div>

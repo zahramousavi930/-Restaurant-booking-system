@@ -39,7 +39,7 @@ class comment_form(forms.Form):
     )
 
     c_text= forms.CharField(
-        widget=forms.Textarea(attrs={'placeholder': 'text', 'class': 'form-control' , 'row':'5'}),
+        widget=forms.Textarea(attrs={'placeholder': 'text', 'class': 'form-control' }),
         validators=[
             validators.MaxLengthValidator(200)
         ]
