@@ -8,6 +8,27 @@ from django.urls import reverse
 from django.views import View
 from . import models
 from .forms import comment_form ,ReservationForm
+from django.contrib.sitemaps import Sitemap
+from django.http import HttpResponse
+
+
+
+
+
+
+
+
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Disallow: /admin/",
+        "Disallow: /user/",
+        
+    ]
+    content = "\n".join(lines)
+    return HttpResponse(content, content_type="text/plain")
+
+
 
 
 
