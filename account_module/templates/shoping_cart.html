@@ -35,14 +35,14 @@ dashboard
         <td>{{ foo.food.food_name }}</td>
         <td>{{ foo.food.price }} $</td>
         <td>
-          <button type="button" class="btn btn-warning mx-3" onclick="decrease_count('{{ foo.food.pk }}')">-</button>
+          <button name="minuse" type="button" class="btn btn-warning mx-3" onclick="decrease_count('{{ foo.food.pk }}')">-</button>
         </td>
         <td id="count_{{ foo.food.pk }}">{{ foo.count }}</td>
         <td>
-          <button  type="button" class="btn btn-warning mx-3" onclick="increase_count('{{ foo.food.pk }}')">+</button>
+          <button name="Increase" type="button" class="btn btn-warning mx-3" onclick="increase_count('{{ foo.food.pk }}')">+</button>
         </td>
         <td>
-          <button type="button" onclick="modify_order('{{ foo.food.pk }}')" class="btn btn-danger mx-3">&times;</button>
+          <button name="delete" type="button" onclick="modify_order('{{ foo.food.pk }}')" class="btn btn-danger mx-3">&times;</button>
         </td>
       </tr>
       {% endfor %}

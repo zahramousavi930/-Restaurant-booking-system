@@ -48,7 +48,7 @@ dashboard
             <td>{{ foo.date }}</td>
             <td>{{ foo.timee }}</td>
         <td><a href="{% url 'edit-dashboard' foo.pk%}" class="btn btn-warning">edit </a></td>
-        <td><button type="button" onclick="remove_reserv({{ foo.pk }})" class="btn btn-danger">&times;</button></td>
+        <td><button name="remove" type="button" onclick="remove_reserv({{ foo.pk }})" class="btn btn-danger">&times;</button></td>
 
 
       </tr>
