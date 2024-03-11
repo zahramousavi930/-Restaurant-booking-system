@@ -1,1 +1,52 @@
-#like_btn{width:40px;height:40px;border-radius:100%;background:#ffbe33;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;outline:none;border:none;color:white;}.like_part{display:flex;align-items:center;justify-content:space-between;width:72px;}#set{color:#fff;background-color:#218838;border-color:#1e7e34;}#cancel{color:#fff;background-color:#c82333;border-color:#bd2130;}.shop_btn{outline:none;border:none;color:white;background-color:#ffc107;border-radius:50px;font-size:25px;width:40px;}
+#like_btn{
+    width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: #ffbe33;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: white;
+}
+
+
+.like_part{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 72px;
+}
+
+
+#set{
+color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+
+}
+
+#cancel{
+ color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.shop_btn{
+outline: none;
+  border: none;
+  color: white;
+  background-color: #ffc107;
+  border-radius: 50px;
+  font-size: 25px;
+  width: 40px;
+}
+
