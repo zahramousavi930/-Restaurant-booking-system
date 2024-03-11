@@ -25,3 +25,9 @@ urlpatterns = [
     path('', include('food_module.urls')),
     path('user/', include('account_module.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+handler404 = 'food_module.views.custom_404_view'
+

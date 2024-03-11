@@ -124,3 +124,10 @@ class about_us(TemplateView):
         context['footer'] = models.Footer_data.objects.all()
 
         return context
+
+
+
+
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)

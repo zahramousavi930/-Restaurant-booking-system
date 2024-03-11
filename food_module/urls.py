@@ -9,3 +9,5 @@ urlpatterns = [
     path('BookTable', views.Book_table.as_view(), name='book_table'),
     path('about-us', views.about_us.as_view(), name='about_us'),
 ]
+
+
