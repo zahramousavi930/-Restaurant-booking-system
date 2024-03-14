@@ -1,8 +1,8 @@
-@media (max-width: 1300px) {}
+/* @media screen and (max-width: 1300px) {}
 
-@media (max-width: 1120px) {}
+@media screen and (max-width: 1120px) {} */
 
-@media (max-width: 992px) {
+@media screen and (max-width: 992px) {
   .hero_area {
     min-height: auto;
   }
@@ -38,7 +38,7 @@ padding-left: 0;
   }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
 
   .about_section .detail-box,
   .book_section .form_container {
@@ -60,11 +60,11 @@ padding-left: 0;
   }
 }
 
-@media (max-width: 576px) {}
+@media screen and (max-width: 576px) {}
 
-@media (max-width: 480px) {}
+@media screen and (max-width: 480px) {}
 
-@media (max-width: 430px) {
+@media screen and (max-width: 430px) {
   .offer_section .box {
     flex-direction: column;
     text-align: center;
@@ -76,20 +76,20 @@ padding-left: 0;
   }
 }
 
-@media (max-width: 376px) {
+@media screen and (max-width: 376px) {
   .slider_section .detail-box h1 {
     font-size: 3rem;
   }
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
   }
 }
 
 
-@media (min-width:576px) and (max-width:991px) {
+@media screen and (min-width:576px) and (max-width:991px) {
   .rent_solution_container .col-md-4.col-sm-6 {
     float: left;
     width: 50%;
