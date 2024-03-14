@@ -38,7 +38,8 @@ food_pk
     }).then(response=>{
          response.json().then(res=>{
             if(res.status ==='ok'){
-                window.location.href = document.URL
+                window.location.href = window.location.href; // Redirect to the same URL
+                window.location.reload();
             }
         })
 
@@ -86,7 +87,8 @@ food_pk
     }).then(response=>{
         response.json().then(res=>{
             if(res.status ==='ok'){
-                window.location.href = document.URL
+                window.location.href = window.location.href;
+                window.location.reload(); 
             }
         })
 
