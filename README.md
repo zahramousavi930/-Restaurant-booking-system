@@ -178,9 +178,9 @@ All parts of views and forms were tested using the inner framework of Django tes
 
 - #### Home Page Validation
 
-  - [Link](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-restaurant-booking-site.com%2F)
+  - [Link](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbooking-2343-resturant-fbcb6c4f4109.herokuapp.com%2Fuser%2Fshopping_cart)
 
-  ![Home Page Validation Image](static/images/htmltest.PNG)
+  ![Home Page Validation Image](static/images/tasting.PNG)
 
 ...
 
@@ -188,7 +188,7 @@ All parts of views and forms were tested using the inner framework of Django tes
 
 - Lighthouse, using Chrome Dev Tools, was used to ensure best practices were followed on the site.
 
-  ![Lighthouse Test Image](static/images/lighthouse.PNG)
+  ![Lighthouse Test Image](static/images/performance.PNG)
 
 
 ## Contributing
