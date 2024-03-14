@@ -490,7 +490,7 @@ function bookingg() {
                     title: res.message
                 })
                 setTimeout(function() {
-    window.location.href = 'user/dashboard';
+    window.location.href = '/user/dashboard';
 }, 5000);
             }
 

@@ -13,44 +13,62 @@ dashboard
 
 
 
-<h2 class="m-4">sopping cart</h2>
+<h2 class="m-4 " id="cart">sopping cart</h2>
 <div class="container">
-   <form action="{% url 'modify_order' %}" method="post">
+   <form action="{% url 'modify_order' %}" class="d-flex flex-column align-items-center justify-content-evenly" method="post">
   {% csrf_token %}
 
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Decrease</th>
-        <th scope="col">Count</th>
-        <th scope="col">Increase</th>
-        <th scope="col">Remove</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for foo in order.orderdetail_set.all %}
-      <tr>
-        <td>{{ foo.food.food_name }}</td>
-        <td>{{ foo.food.price }} $</td>
-        <td>
-          <button name="minuse" type="button" class="btn btn-warning mx-3" onclick="decrease_count('{{ foo.food.pk }}')">-</button>
-        </td>
-        <td id="count_{{ foo.food.pk }}">{{ foo.count }}</td>
-        <td>
-          <button name="Increase" type="button" class="btn btn-warning mx-3" onclick="increase_count('{{ foo.food.pk }}')">+</button>
-        </td>
-        <td>
-          <button name="delete" type="button" onclick="modify_order('{{ foo.food.pk }}')" class="btn btn-danger mx-3">&times;</button>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+
+  <div class="container order_container flex-column d-flex justify-content-evenly w-100 align-items-center">
+    {% for foo in order.orderdetail_set.all %}
+
+    <div class="main_food_order my-3 w-100 d-flex justify-content-evenly align-items-center " >
+      <div class="food_order_image">
+        <img src="{{ foo.food.image.url }}" alt="" width="60px" height="60px">
+      </div>
+      
+      <div class="food_name">
+        <p class="text-dark my-3">
+          {{ foo.food.food_name }}
+        </p>
+      </div>
+
+      <div>
+        <p class="my-3">{{ foo.food.price }} $</p>
+      </div>
+
+
+
+      <div>
+        <button name="minuse" type="button" class="btn btn-warning mx-3" onclick="decrease_count('{{ foo.food.pk }}')">-</button>
+      </div>
+
+  
+    
+      
+      <div>
+        <p class="my-3" id="count_{{ foo.food.pk }}">{{ foo.count }}</p>
+      </div>
+      
+      <div>
+        <button name="Increase" type="button" class="btn btn-warning mx-3" onclick="increase_count('{{ foo.food.pk }}')">+</button>
+      </div>
+
+      <div>
+        <button name="delete" type="button" onclick="modify_order('{{ foo.food.pk }}')" class="btn btn-danger mx-3">&times;</button>
+      </div>
+
+    </div>
+    {% endfor%}
+
+  </div>
+
+
+<br>
+
 </form>
 
-<p class="btn btn-primary">Final price: ${{ sum }}</p>
+<p class="btn btn-primary my-3">Final price: ${{ sum }}</p>
 
 
 
