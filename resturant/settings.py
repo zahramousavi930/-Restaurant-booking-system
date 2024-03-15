@@ -37,7 +37,8 @@ DEBUG = False
 ALLOWED_HOSTS =['booking-resturant-28103ce31422.herokuapp.com',
                     'https://booking-resturant-28103ce31422.herokuapp.com',
                     'http://booking-resturant-28103ce31422.herokuapp.com',
-                    'www.booking-resturant-28103ce31422.herokuapp.com'
+                    'www.booking-resturant-28103ce31422.herokuapp.com',
+                    '8000-zahramousav-restaurantb-xejvn38epyy.ws-eu110.gitpod.io'
                     ]
 
 # Application definition
