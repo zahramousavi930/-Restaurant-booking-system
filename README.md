@@ -6,7 +6,7 @@ The site is fully responsive and was built using the Django framework in Python.
 
 The live site has been deployed [here](https://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/).
 
-![Am I Responsive Image](static/images/)
+![Am I Responsive Image](static/images/responsive.png)
 ## Table of Contents
 
 - [Live Site](https://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/)
@@ -188,7 +188,7 @@ All parts of views and forms were tested using the inner framework of Django tes
 
 - Lighthouse, using Chrome Dev Tools, was used to ensure best practices were followed on the site.
 
-  ![Lighthouse Test Image](static/images/performance.PNG)
+  ![Lighthouse Test Image](static/images/preformance.png)
 
 
 ## Contributing
