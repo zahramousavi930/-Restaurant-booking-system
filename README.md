@@ -7,6 +7,11 @@ The site is fully responsive and was built using the Django framework in Python.
 The live site has been deployed [here](https://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/).
 
 ![Am I Responsive Image](static/images/responsive.png)
+
+## Video Demo
+![the demo of website](static/images/demo.mov)
+
+
 ## Table of Contents
 
 - [Live Site](https://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/)
