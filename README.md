@@ -4,7 +4,7 @@ Welcome to the Restaurant Booking System, a user-friendly platform that allows y
 
 The site is fully responsive and was built using the Django framework in Python.
 
-The live site has been deployed [here](https://ckz8748-django-booking-system-b2059e81383e.herokuapp.com/).
+The live site has been deployed [here](https://booking-resturant-28103ce31422.herokuapp.com/).
 
 ![Am I Responsive Image](static/images/responsive.png)
 
