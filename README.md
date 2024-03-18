@@ -9,7 +9,7 @@ The live site has been deployed [here](https://ckz8748-django-booking-system-b20
 ![Am I Responsive Image](static/images/responsive.png)
 
 ## Video Demo
-![the demo of website](static/images/4be2fef0-d1da-47b2-989b-81c0a2b1f7d4.mp4)
+![the demo of website](static/images/demo.mp4)
 
 
 ## Table of Contents
