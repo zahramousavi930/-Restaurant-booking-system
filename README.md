@@ -9,7 +9,8 @@ The live site has been deployed [here](https://ckz8748-django-booking-system-b20
 ![Am I Responsive Image](static/images/responsive.png)
 
 ## Video Demo
-![the demo of website](static/images/demo.mp4)
+Watch the video demonstration [here](https://youtu.be/PgEtIL31-4k).
+
 
 
 ## Table of Contents
